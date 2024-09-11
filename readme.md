@@ -7,6 +7,30 @@
 - Un dossier `data_dir/input/` contenant des pdfs de factures.
 - Un csv `data_dir/factur_data.csv` contant des infos sur les factures à traiter
 
+
+Les infos minimales sont les suivantes : 
+BT = dénomination dd'une donnée métier dans la norme sémantique européenne
+
+| Numéro BT | Description |
+|-----------|-------------|
+| BT-23 | donnée facultative |
+| BT-24 | Identification de spécification : référence au format et profil utilisé : donnée Obligatoire |
+| BT-1 | numéro de facture |
+| BT-3 | type de facture |
+| BT-2 | date d’émission de la facture |
+| BT-10 | référence acheteur |
+| BT-27 | nom (raison sociale) du fournisseur |
+| BT-30 | identification légale du vendeur |
+| BT-31 | numéro de TVA intracommunautaire |
+| BT-47 | identification légale de l’acheteur |
+| BT-44 | nom de l’acheteur (raison sociale) |
+| BT-13 | numéro de commande fourni par l’acheteur |
+| BT-5 | devise de la facture |
+| BT-109 | montant HT |
+| BT-110 | montant de la TVA où currencyID = BT-5 |
+| BT-112 | montant TTC |
+| BT-115 | montant net à payer |
+
 ### Sorties Attendues
 Pour chaque pdf dans `data_dir/input/`, si présent dans `data_dir/factur_data.csv` (la manière de l'identifier reste à définir), un pdf au format `PDF/A-3` contenant un xml `factur-x.xml` permetant son traitement. 
 Le xml pourra varier pour se conformer à la plateforme de destination. Les pdfs de sortie seront dans `data_dir/output/pdf`
@@ -36,6 +60,21 @@ Le CII (Cross Industry Invoice) est un schéma XML normé par l'UN/CEFACT qui pe
 Comme il est extensible, il va probablement falloir un générateur de CII par plateforme de destination des factur-x.
 
 #### Chorus
+
+La doc chorus est fournie, mais il est difficile de trouver le xml le plus simple à emnbarquer. 
+
+Donc, en cherchant parmi les exemples de pdf donnés, on en séléctionne un qui ressemble à la version minimale que l'on veut implémenter et on extrait le xml embarqué.
+
+https://communaute.chorus-pro.gouv.fr/documentation/exemples-de-flux/
+
+Deux sources d'exemples, les flux en CII complets, mieux décrits : 
+
+|FSO1116A_P01| Facture simple - Cas nominal avec uniquement les champs obligatoires et une ligne de facturation|
+|FSO1116A_P02| Facture simple - Cas Nominal avec tous les champs obligatoires et facultatifs|
+|FSO1116A_P20| Facture simple avec 3 taux de TVA, dont une ligne à 0|
+
+Mon intuition est que la structure est la même pour le xml des deux flux E1 CII et E2 factur-x.
+Idée : prendre le xml le plus simple tiré d'un flux factur-x et y ajouter les balises nécessaires pour ajouter toutes nos infos en duplicant la structure des CII complexes d'exemple
 
 
 
