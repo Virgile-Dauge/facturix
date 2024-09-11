@@ -13,10 +13,11 @@ BT = dénomination dd'une donnée métier dans la norme sémantique européenne
 
 | Numéro BT | Description |
 |-----------|-------------|
-| BT-23 | donnée facultative |
-| BT-24 | Identification de spécification : référence au format et profil utilisé : donnée Obligatoire |
+| BT-23 | Process Chorus A1 (dépôt facture), A2 (dépôt
+facture déjà payée) |
+| BT-24 | Identification de spécification : référence au format et profil utilisé |
 | BT-1 | numéro de facture |
-| BT-3 | type de facture |
+| BT-3 | type de facture ex 380 : Facture commerciale|
 | BT-2 | date d’émission de la facture |
 | BT-10 | référence acheteur |
 | BT-27 | nom (raison sociale) du fournisseur |
