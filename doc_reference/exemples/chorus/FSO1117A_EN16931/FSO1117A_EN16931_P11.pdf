@@ -1,0 +1,420 @@
+%PDF-1.3
+1 0 obj
+<<
+/Kids [ 3 0 R 4 0 R ]
+/Type /Pages
+/Count 2
+>>
+endobj
+2 0 obj
+<<
+/ModDate (D\07220180802091537\05300\04700\047)
+/Subject (Factur\055X Invoice FSO1117A\137P11 dated 2018\05501\05501 issued by BRICORAMA FRANCE)
+/Producer (PyPDF2)
+/Title (BRICORAMA FRANCE\072 Invoice FSO1117A\137P11)
+/Creator (factur\055x Python lib \057 AIFE)
+/Keywords (Invoice\054 Factur\055X)
+/Author (BRICORAMA FRANCE)
+/CreationDate (D\07220180802091537\05300\04700\047)
+>>
+endobj
+3 0 obj
+<<
+/Contents 11 0 R
+/Parent 1 0 R
+/Type /Page
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F2 12 0 R
+/F1 13 0 R
+>>
+>>
+/MediaBox [ 0 0 612 792 ]
+>>
+endobj
+4 0 obj
+<<
+/Contents 14 0 R
+/Parent 1 0 R
+/Type /Page
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F2 12 0 R
+/F1 13 0 R
+>>
+>>
+/MediaBox [ 0 0 612 792 ]
+>>
+endobj
+5 0 obj
+<<
+/Length 12100
+/Type /EmbeddedFile
+/Params <<
+/ModDate (D\07220180802091537\05300\04700\047)
+>>
+/Subtype /text#2Fxml
+>>
+stream
+ï»¿<?xml version='1.0' encoding='UTF-8'?>
+<rsm:CrossIndustryInvoice
+	xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+	xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+	xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+	xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<!-- P11: Facture simple - Net Ã  payer nÃ©gatif avec mode paiement report -->
+	
+	<rsm:ExchangedDocumentContext>
+		<ram:BusinessProcessSpecifiedDocumentContextParameter>
+			<ram:ID>A1</ram:ID>																			<!-- GÃ©nÃ©ralitÃ©s.Cadre (facture simple, cadre de facture de travaux...) -->
+		</ram:BusinessProcessSpecifiedDocumentContextParameter>
+		<ram:GuidelineSpecifiedDocumentContextParameter>
+			<ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+		</ram:GuidelineSpecifiedDocumentContextParameter>
+	</rsm:ExchangedDocumentContext>
+	<rsm:ExchangedDocument>
+		<ram:ID>FSO1117A_P11</ram:ID>																<!-- GÃ©nÃ©ralitÃ©s.Identifiant -->
+		<ram:TypeCode>380</ram:TypeCode>																<!-- GÃ©nÃ©ralitÃ©s.Type (380: facture, 381: avoir)-->
+		<ram:IssueDateTime>
+			<udt:DateTimeString>20180101</udt:DateTimeString>											<!-- GÃ©nÃ©ralitÃ©s.Date Ã©mission facture -->
+		</ram:IssueDateTime>
+		<ram:IncludedNote>
+			<ram:Content>Note</ram:Content>																<!-- GÃ©nÃ©ralitÃ©s.Note -->
+		</ram:IncludedNote>
+	</rsm:ExchangedDocument>
+	<rsm:SupplyChainTradeTransaction>
+		<ram:IncludedSupplyChainTradeLineItem> 															<!-- bloc Ligne facture -->
+			<ram:AssociatedDocumentLineDocument>
+				<ram:LineID>1</ram:LineID>																<!-- Ligne.NumÃ©ro -->
+				<ram:LineStatusCode>Type</ram:LineStatusCode>											<!-- Ligne.Type -->
+				<ram:LineStatusReasonCode>Sous type</ram:LineStatusReasonCode>							<!-- Ligne.Sous-type -->
+				<ram:IncludedNote>
+					<ram:Content>ComplÃ©ment</ram:Content>												<!-- Ligne.ComplÃ©ment -->
+				</ram:IncludedNote>
+			</ram:AssociatedDocumentLineDocument>
+			<ram:SpecifiedTradeProduct>
+				<ram:GlobalID>1234321</ram:GlobalID>													<!-- Ligne.RÃ©fÃ©rence produit -->
+				<ram:Name>CPP</ram:Name>																<!-- Ligne.Nom article -->
+				<ram:Description>un test</ram:Description>												<!-- Ligne.Description -->
+			</ram:SpecifiedTradeProduct>
+			<ram:SpecifiedLineTradeAgreement>
+				<ram:GrossPriceProductTradePrice>
+					<ram:ChargeAmount>0</ram:ChargeAmount>												<!-- Ligne-Charge/remise.Montant base (de calcul de charge/remise) -->
+					<ram:AppliedTradeAllowanceCharge>
+						<ram:ActualAmount>0</ram:ActualAmount>											<!-- Ligne-Charge/remise.Montant charge/remise -->
+					</ram:AppliedTradeAllowanceCharge>
+				</ram:GrossPriceProductTradePrice>
+				<ram:NetPriceProductTradePrice>
+					<ram:ChargeAmount>100</ram:ChargeAmount>											<!-- Ligne.Prix unitaire -->
+				</ram:NetPriceProductTradePrice>
+			</ram:SpecifiedLineTradeAgreement>
+			<ram:SpecifiedLineTradeDelivery>
+				<ram:BilledQuantity unitCode="">1</ram:BilledQuantity>									<!-- Ligne.QuantitÃ© facturÃ©e -->
+				<ram:ShipToTradeParty>
+					<ram:GlobalID>AchÃ¨res</ram:GlobalID>												<!-- Ligne.Identifiant site livraison -->
+				</ram:ShipToTradeParty>
+				<ram:ActualDeliverySupplyChainEvent>
+					<ram:OccurrenceDateTime>
+						<udt:DateTimeString>20180101</udt:DateTimeString>								<!-- Ligne.Date livraison -->
+					</ram:OccurrenceDateTime>
+				</ram:ActualDeliverySupplyChainEvent>
+			</ram:SpecifiedLineTradeDelivery>
+			<ram:SpecifiedLineTradeSettlement>
+				<ram:ApplicableTradeTax>
+					<ram:RateApplicablePercent>20</ram:RateApplicablePercent>							<!-- Ligne.Taux TVA -->
+				</ram:ApplicableTradeTax>
+				<ram:SpecifiedTradeAllowanceCharge>
+					<ram:ChargeIndicator>
+						<udt:IndicatorString>false</udt:IndicatorString>
+					</ram:ChargeIndicator>														
+					<ram:ReasonCode>code</ram:ReasonCode>												<!-- Ligne-Charge/remise.Code de motif de charge/remise -->
+					<ram:Reason>LibellÃ©</ram:Reason>													<!-- Ligne-Charge/remise.Code de motif de charge/remise -->
+				</ram:SpecifiedTradeAllowanceCharge>
+				<ram:SpecifiedTradeSettlementLineMonetarySummation>
+					<ram:LineTotalAmount>100</ram:LineTotalAmount>										<!-- Ligne.Montant HT -->
+				</ram:SpecifiedTradeSettlementLineMonetarySummation>
+			</ram:SpecifiedLineTradeSettlement>
+		</ram:IncludedSupplyChainTradeLineItem>
+		<ram:ApplicableHeaderTradeAgreement>
+			<ram:BuyerReference>SERV1</ram:BuyerReference>												<!-- DÃ©biteur.Code service -->
+			<ram:SellerTradeParty>			
+				<ram:Name>BRICORAMA FRANCE</ram:Name>													<!-- Fournisseur.Raison sociale -->
+				<ram:Description>Description</ram:Description>											<!-- Fournisseur.Note -->
+				<ram:SpecifiedLegalOrganization>
+					<ram:ID schemeID="1">40668031401116</ram:ID>										<!-- Fournisseur.Identifiant -->
+					<ram:TradingBusinessName>Bricorama</ram:TradingBusinessName>						<!-- Fournisseur.Nom commercial -->
+					<ram:PostalTradeAddress>
+						<ram:PostcodeCode>78260</ram:PostcodeCode>										<!-- Fournisseur.Code postal commercial -->
+						<ram:LineOne>Adresse commerciale Fournisseur</ram:LineOne>						<!-- Fournisseur.Ligne adresse commerciale -->
+						<ram:CityName>Nom commune commercial</ram:CityName>								<!-- Fournisseur.Nom commune commercial -->
+						<ram:CountryID>FR</ram:CountryID>												<!-- Fournisseur.Code pays commercial -->
+					</ram:PostalTradeAddress>
+				</ram:SpecifiedLegalOrganization>
+				<ram:DefinedTradeContact>
+					<ram:PersonName>PersonName</ram:PersonName>											<!-- Fournisseur.Nom contact -->
+					<ram:DepartmentName>DepartmentName</ram:DepartmentName>								<!-- Fournisseur.Nom service -->
+					<ram:TelephoneUniversalCommunication>
+						<ram:CompleteNumber>0104546573</ram:CompleteNumber>								<!-- Fournisseur.TÃ©lÃ©phone contact -->
+					</ram:TelephoneUniversalCommunication>
+					<ram:FaxUniversalCommunication>
+						<ram:CompleteNumber>0104546575</ram:CompleteNumber>								<!-- Fournisseur.TÃ©lÃ©copie contact -->
+					</ram:FaxUniversalCommunication>
+					<ram:EmailURIUniversalCommunication>
+						<ram:URIID>bricorama@hotmail.com</ram:URIID>									<!-- Fournisseur.Courriel contact -->
+					</ram:EmailURIUniversalCommunication>
+				</ram:DefinedTradeContact>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>78260</ram:PostcodeCode>											<!-- Fournisseur.Code postal lÃ©gal -->
+					<ram:LineOne>Ligne adresse lÃ©gale</ram:LineOne>										<!-- Fournisseur.Ligne adresse lÃ©gale -->
+					<ram:CityName>Ville</ram:CityName>													<!-- Fournisseur.Nom commune lÃ©gal -->
+					<ram:CountryID>FR</ram:CountryID>													<!-- Fournisseur.Code pays lÃ©gal -->
+				</ram:PostalTradeAddress>
+			</ram:SellerTradeParty> 
+			<!-- Bloc DÃ©biteur -->
+			<ram:BuyerTradeParty> 
+				<ram:Name>URSSAF Basse-Normandie</ram:Name>												<!-- DÃ©biteur.Raison sociale -->
+				<ram:Description>Note</ram:Description>													<!-- DÃ©biteur.Note -->
+				<ram:SpecifiedLegalOrganization>
+					<ram:ID schemeID="0002">75356054900010</ram:ID>										<!-- DÃ©biteur.Identifiant -->
+				</ram:SpecifiedLegalOrganization>
+				<ram:DefinedTradeContact>
+					<ram:DepartmentName>Service 1</ram:DepartmentName>									<!-- DÃ©biteur.Nom service -->
+				</ram:DefinedTradeContact>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>78700</ram:PostcodeCode>											<!-- DÃ©biteur.Code postal lÃ©gal -->
+					<ram:LineOne>Ligne adresse lÃ©gale</ram:LineOne>										<!-- DÃ©biteur.Ligne adresse lÃ©gale -->
+					<ram:CityName>Ville</ram:CityName>													<!-- DÃ©biteur.Nom commune lÃ©gal -->
+					<ram:CountryID>FR</ram:CountryID>													<!-- DÃ©biteur.Code pays lÃ©gal -->
+				</ram:PostalTradeAddress>
+			</ram:BuyerTradeParty> 
+		</ram:ApplicableHeaderTradeAgreement>
+		<!-- Bloc SiteLivraison -->
+		<ram:ApplicableHeaderTradeDelivery>
+			<ram:ShipToTradeParty>
+				<ram:ID>SiteLivraison</ram:ID>															<!-- SiteLivraison.Identifiant -->
+				<ram:Name>Nom</ram:Name>																<!-- SiteLivraison.Nom -->
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>Code postal lÃ©gal</ram:PostcodeCode>								<!-- SiteLivraison.Code Postal -->
+					<ram:LineOne>Ligne adresse lÃ©gal</ram:LineOne>										<!-- SiteLivraison.Ligne adresse -->
+					<ram:CityName>Ville</ram:CityName>													<!-- SiteLivraison.Nom commune -->
+					<ram:CountryID>FR</ram:CountryID>													<!-- SiteLivraison.Code pays -->
+				</ram:PostalTradeAddress>
+			</ram:ShipToTradeParty>
+		</ram:ApplicableHeaderTradeDelivery> 
+		<ram:ApplicableHeaderTradeSettlement>
+			<ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>										<!-- Devise -->
+			<ram:InvoiceIssuerReference>CSF</ram:InvoiceIssuerReference>								<!-- Fournisseur.Code service -->
+			<ram:SpecifiedTradeSettlementPaymentMeans>
+				<ram:TypeCode>97</ram:TypeCode>															<!-- Paiement.Mode de paiement -->
+				<ram:Information>Notes</ram:Information>												<!-- Paiement.Note -->
+				<ram:PayeePartyCreditorFinancialAccount>
+					<ram:IBANID>FR7610057191370188512730284</ram:IBANID>								<!-- Paiement.Identifiant compte bancaire -->
+				</ram:PayeePartyCreditorFinancialAccount>
+			</ram:SpecifiedTradeSettlementPaymentMeans>
+			<!-- RÃ©capitulatifTaxes -->
+			<ram:ApplicableTradeTax>
+				<ram:CalculatedAmount>20.00</ram:CalculatedAmount>										<!-- RÃ©capitulatifTaxes.Montant Taxes -->
+				<ram:BasisAmount>80.00</ram:BasisAmount>												<!-- RÃ©capitulatifTaxes.Montant de base (pour le calcul de TVA) -->
+				<ram:CategoryCode>S</ram:CategoryCode>													<!-- RÃ©capitulatifTaxes.Type taxe - balise spÃ©cifique aux formats CII16B/FacturX -->
+				<ram:DueDateTypeCode>72</ram:DueDateTypeCode>											<!-- Fournisseur.RÃ©gime TVA. Ici, "72" = Encaissement -->
+				<ram:RateApplicablePercent>20.00</ram:RateApplicablePercent>							<!-- RÃ©capitulatifTaxes.Taux -->
+			</ram:ApplicableTradeTax>
+			<ram:BillingSpecifiedPeriod>
+				<ram:Description>Description de la pÃ©riode</ram:Description>							<!-- GÃ©nÃ©ralitÃ©s.Description de pÃ©riode -->
+				<ram:StartDateTime>
+					<udt:DateTimeString>20170101</udt:DateTimeString>									<!-- GÃ©nÃ©ralitÃ©s.DÃ©but de pÃ©riode -->
+				</ram:StartDateTime>
+				<ram:EndDateTime>
+					<udt:DateTimeString>20171231</udt:DateTimeString>									<!-- GÃ©nÃ©ralitÃ©s.Fin de pÃ©riode -->
+				</ram:EndDateTime>
+			</ram:BillingSpecifiedPeriod>
+			<ram:SpecifiedTradeAllowanceCharge>
+				<ram:ChargeIndicator>
+					<udt:IndicatorString>false</udt:IndicatorString>
+				</ram:ChargeIndicator>
+				<ram:BasisAmount>700.00</ram:BasisAmount>												<!-- Charge/remise.Montant de base -->			
+				<ram:ActualAmount>15.00</ram:ActualAmount>												<!-- Charge/remise.Montant de charge/remise -->
+			</ram:SpecifiedTradeAllowanceCharge>
+			<ram:SpecifiedTradePaymentTerms> 
+				<ram:DueDateDateTime>
+					<udt:DateTimeString>20180906</udt:DateTimeString>									<!-- Paiement.Date Ã©chÃ©ance -->
+				</ram:DueDateDateTime>
+			</ram:SpecifiedTradePaymentTerms>
+			<ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+				<ram:LineTotalAmount>100</ram:LineTotalAmount>
+				<ram:ChargeTotalAmount>0</ram:ChargeTotalAmount>										<!-- GÃ©nÃ©ralitÃ©s.Montant charges -->
+				<ram:AllowanceTotalAmount>0</ram:AllowanceTotalAmount>									<!-- GÃ©nÃ©ralitÃ©s.Montant remises -->
+				<ram:TaxBasisTotalAmount>100</ram:TaxBasisTotalAmount>									<!-- GÃ©nÃ©ralitÃ©s.Montant HT -->
+				<ram:TaxTotalAmount>20</ram:TaxTotalAmount>												<!-- GÃ©nÃ©ralitÃ©s.Montant Taxes -->
+				<ram:GrandTotalAmount>120</ram:GrandTotalAmount>										<!-- GÃ©nÃ©ralitÃ©s.Montant TTC -->
+				<ram:TotalPrepaidAmount>240</ram:TotalPrepaidAmount>									<!-- GÃ©nÃ©ralitÃ©s.Montant Ã  dÃ©duire -->
+				<ram:DuePayableAmount>-120</ram:DuePayableAmount>										<!-- GÃ©nÃ©ralitÃ©s.Montant net Ã  payer -->
+			</ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+		</ram:ApplicableHeaderTradeSettlement>
+	</rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
+endstream
+endobj
+6 0 obj
+<<
+/Type /Filespec
+/AFRelationship /Alternative
+/F (factur\055x\056xml)
+/Desc (Factur\055X Invoice)
+/UF (factur\055x\056xml)
+/EF <<
+/F 5 0 R
+/UF 5 0 R
+>>
+>>
+endobj
+7 0 obj
+<<
+/Length 3324
+>>
+stream
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description xmlns:pdfaid="http://www.aiim.org/pdfa/ns/id/" rdf:about=""><pdfaid:part>3</pdfaid:part><pdfaid:conformance>B</pdfaid:conformance></rdf:Description><rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about=""><dc:title><rdf:Alt><rdf:li xml:lang="x-default">BRICORAMA FRANCE: Invoice FSO1117A_P11</rdf:li></rdf:Alt></dc:title><dc:creator><rdf:Seq><rdf:li>BRICORAMA FRANCE</rdf:li></rdf:Seq></dc:creator><dc:description><rdf:Alt><rdf:li xml:lang="x-default">Factur-X Invoice FSO1117A_P11 dated 2018-01-01 issued by BRICORAMA FRANCE</rdf:li></rdf:Alt></dc:description></rdf:Description><rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about=""><pdf:Producer>PyPDF2</pdf:Producer></rdf:Description><rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about=""><xmp:CreatorTool>factur-x python lib by Alexis de Lattre</xmp:CreatorTool><xmp:CreateDate>2018-08-02T09:15:37+00:00</xmp:CreateDate><xmp:ModifyDate>2018-08-02T09:15:37+00:00</xmp:ModifyDate></rdf:Description><rdf:Description xmlns:pdfaExtension="http://www.aiim.org/pdfa/ns/extension/" xmlns:pdfaSchema="http://www.aiim.org/pdfa/ns/schema#" xmlns:pdfaProperty="http://www.aiim.org/pdfa/ns/property#" rdf:about="">
+
+	 <pdfaExtension:schemas>
+		<rdf:Bag>
+		   <rdf:li rdf:parseType="Resource">
+			  <pdfaSchema:schema>Factur-X PDFA Extension Schema</pdfaSchema:schema>
+			  <pdfaSchema:namespaceURI>urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#</pdfaSchema:namespaceURI>
+			  <pdfaSchema:prefix>fx</pdfaSchema:prefix>
+			  <pdfaSchema:property>
+				 <rdf:Seq>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>DocumentFileName</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>name of the embedded XML invoice file</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>DocumentType</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>INVOICE</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>Version</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>The actual version of the Factur-X XML schema</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>ConformanceLevel</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>The conformance level of the embedded Factur-X data</pdfaProperty:description>
+					</rdf:li>
+				 </rdf:Seq>
+			  </pdfaSchema:property>
+		   </rdf:li>
+		</rdf:Bag>
+	 </pdfaExtension:schemas>
+  </rdf:Description>
+<rdf:Description xmlns:fx="urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#" rdf:about="" fx:ConformanceLevel="EN 16931" fx:DocumentFileName="factur-x.xml" fx:DocumentType="INVOICE" fx:Version="1.0"/></rdf:RDF>
+
+endstream
+endobj
+8 0 obj
+<<
+/Type /Filespec
+/AFRelationship /Alternative
+/F (factur\055x\056xml)
+/Desc (Factur\055X Invoice)
+/UF (factur\055x\056xml)
+/EF <<
+/F 5 0 R
+/UF 5 0 R
+>>
+>>
+endobj
+9 0 obj
+[ 8 0 R ]
+endobj
+10 0 obj
+<<
+/AF 9 0 R
+/Type /Catalog
+/Pages 1 0 R
+/Names <<
+/EmbeddedFiles <<
+/Names [ (factur\055x\056xml) 6 0 R ]
+>>
+>>
+/Metadata 7 0 R
+>>
+endobj
+11 0 obj
+<<
+/Length 1883
+/Filter /FlateDecode
+>>
+stream
+xœ­YÍrÛ6¾ó)p«3ÓÀø'é›íØÓdÇQÔöP÷ ±h[ı8²”6o£Gë±º÷º  Êcw’‰¹ãİïÛ?ì‚Ì—ìd˜1’—‚ÇÙÙ0û˜}Ée2×äÏLwğËÏgä}öûŒŒ3iH®™e:wOSû$e
+eôè~—ı–Íÿ,o3%H®8•€!JM•©Å)ˆŠæDFµY	
+nxñ.»i,T®(ËÀêçFÅB´h^FóV}ÖúÑ!J€ŞÄqOr¥‘ fV)*€H–”itÁ‰¼ ÜX+IïÊNİ'’–Šó‚¤?1µ/„wNúÅkÜV>­,’iZr›!aæd$ã6# [r¥mÊÑåØš%©õ^×²qñx,/ÛÊêĞĞÓ&4	PÀš:ŞP§\i¾²¹Ëµ¤SçDXya­¦:•kõ>•}!üË+k°—Ãü°(?ĞDyPªF2¬MAYéêS?7ê(ªEór]ÙĞ´!Nˆ ¨Ÿ"Ç=uÊ•FWÖÈøÔóœJ¤>•zïÊ>şå•õÙ}4C@®‚×bX[-ñ8¸Úºg¯b8¼ÜÔ64MÛ"&-Ó¦Šé²¥±xvæØ½=‹íUIU;H¼¸ ò¼^(ºynÔQ¬÷wû!v‘L=sÂ” EI}÷ä)[KÜÙ~ØÉW‹PdÛjÙ©÷îìçÃ¿°³%ì¹B¶ÛKŸëvİBa/ ’—T^DîFqZZúÎÉ­	˜Û® 6˜%şt8S¼Ğ‡4„Æ‡ˆ3ŒÇ'OpÊÃĞ]¨Åf;j£©îˆV¹G}_ş?U·ÉîîÔpl© ·µäÖä‚/O-{“7’ĞA}S€nƒÄNDi“ÅN%¤QHş"Cáşno´\j,&ÅB­ÕçÜ>òyÕD›¼ÀˆEsçx-ÂíKØ2Â8èŠN¹G(/a‹&ä	¼VÆıf7Âä%$Û¡{ç>\KĞí#ƒYìNÊ£ì‰÷m®b¾4D(|¯L¹MŸÎ©)Îƒ†î‘V¶oŸíùªõ…ÄûÙ¬s¢SŠê2€jä€=±nÈC²)$No˜S¶4‡QR`@~Zr;½vÆ r
+`ç´Öƒ2ò Œ£mf‰G]ÒÓ;…Ğx2¦!¡õÉ0;<‡·è›áMÆí±€[	¾vKÜùÃYvp>º^­—9_¬—óÉÃCµ^’«ƒóO8gæê9"‚qXqŒ¿füÕğ3~¢ØËK¿&Ä&¡>Ì1†Àpÿ!,Ô>›U«Ğï1ÒøšUâ´FóÕdµİ¼[/'ãÉ—u§‘Ãğ/$•Î»“ÁÛÓƒã÷Çä|p|qzödphšsjœéñxYAªÈõb6«–×“Ñ4Jà^$¬´°Hy!Û‹ÅÌ‚­ç!è^/!§Â#©ö4HİiÃŞä1{5|Nòtipm¢éÏ“[ˆrT§pº½M˜wšĞæ<ÌØ¯“i3˜†$A;`Ò¥5øôvp6$G›'“7Y†VŠS0Éãœ›ıõĞÒ÷ãéb¾‚Ã¸¯ŞDµkşËjù°˜_ŒfûÁ45Ú·ÓíıİJp´!O’ÁKKdÉ8S0ƒt.÷Ñ©RÒ\zºëÅıd?]ã#2õ|z/_®¢Í{hªÑmµìòuìêOˆdîDlöÔKÂ°Â¦M/ŸN'Õ|õ$ŞÊí­ÔPSviÓ7¥úA'>=©ë/PŞ,×°¼s2™ìÅ	;zW*ºúõÍŞ(äîÔÅ•Ø±J	\]áÒÙË7'goŞâ®A/¹Ù¼Ş\n—“Å¸"ğ÷ÆêV“ÅœŒ×Âøa¼„R&!5¸â-]²q}‘Í¬%?äÂÊOApÃĞM³;o7GäÍöşß¹-ÉzNn‚U9şG¶ó³ÚwÜŞĞ¤‘øjÀƒíõè~²ZO!Â›8áöX`k`ş	Ñ•.ßÃÅj4%?!…Wg¿®^=mSÃDœ±ëÃ
+Å†Ÿ–u8ú«zèM^ÑåMÚËÑÂQ;ÌN/ñL}¾œ—ƒj6y@?{ºYP-C”Ùp«Wíéİhyû=éq¼%¥íÉÒŞó´n²3ØB_Â*·‡˜—uàÕŠ\;gÄx ıÙ~»ßsE¨ÿ×)Xßş¹®<Ò»”ØãW*ÁC ®{µ‘`¿Ñõm#[H†Gl8<ıÎ3@ğ½¾›Öı?–½[’ñv¼Àt¼:o?ÿSçÛ.âßéD(T_'àZš—µÀZ-û“Â-^„ ¯w…¶‘ı.4-t¥S«wê‹Õ‹³€P;	Ê®2œ®ºv—£I5ƒån§ş º_,W{­sMKUû¶~ _ñ8x½^Ìp£}]¬ ²Ën§|ôN×‡#ÂÌ!+q==‚‚%ÏFüPò1û‹·u¸
+endstream
+endobj
+12 0 obj
+<<
+/Encoding /WinAnsiEncoding
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+>>
+endobj
+13 0 obj
+<<
+/Encoding /WinAnsiEncoding
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+>>
+endobj
+14 0 obj
+<<
+/Length 1085
+/Filter /FlateDecode
+>>
+stream
+xœWËnÜ6İë+¸kÄ)¾¤ìœ4FQ FšEĞ…0#Û
+FG6Ÿ3ŸÖ­ÿ¢—¤$RWÅX.faÑsÏë_ú–¼ß%Œ˜<%»Còq—Ü%ßF™0Šü¤äWøòkÂù-ùò'#‡Dhb”&u¢Œ:º'¡)“ğ,şûÇäsÒ8b™# ·3GÀĞÀMHFsÉyFğßöáŞ;#sŠÈo#„-ûY
+Æ¼Jç4U0ÔT)Ë”šhhe#OK³c-Ï(©¦±Å†ò:8X© ¢Y4ö;7©à NUP[¡hfu¡@ÈixLtFUî†/¥§SAÛtÆ(·¶-™LÕv”©™kÎÚì¬Œ¤WPFÎ'm$†rX¸¯"¸`ÂNŠY_°”¦ÄğÃ™ü{ÂÉ€¯ŸŒt‹ 1 ^úYé!ºH'˜`EÈSHªb
+¥)› F0µæğ˜)ÆH\¨¥Ïˆ‚D™Z‹bÊÈ2»@ª8—§0TG’K»ˆÂ„ä‚jÙPÙŠcÄÌI<ep‘-\ŒŒ(H©‘©µ(¦ŒLà óªDª8—§pØ@¡•q/´¦&ÂH®×3¯n.ôÒ…gDA"HL­E1ed™] UœËSd4(<D¿ˆ‚îêx£‚}SxÈœÃùÂÃHˆbDYZkbÊà¥˜<`MÊhšGvKÚ 5BÁ´bp)„çÌÒçC¢^úYbÂ` E˜ EœÈÀ-êíœÌ Ûİ'Ü]8Q©eMsªÉ®N~¼nûj,;Ò}_ìŸ;RdªŸú’ìUÙô?í¾Ú[ØH§c2;;s0È×îëe-’6Êz €ÓÑ~~nNuÕ}ujÈ¡$Ç
+oç"`¹;:r˜7^øn(š¾êŸÉ6£&w¸ûbßíór:u»s°ı{[}'CSõEÕ^ÆÊ”¹İìµVgÜlÕv§ú«-ªîÔ\†á68—¸ñ?Ë©//èyP”±-ëª{!ÜÊ4ÂŞî‹öá2J¥œ.ºéíı²‹QM3wó9æ›x^Öâiæo*p	ÑŞ'WBI71â²€äp9É¶×+8´Ä+Êa_×]M×Õ)É×µ2·W–©÷ÃwrHWÁz'ÙòtZR5÷§¶ö+ôİ"ßl9Í¨şêõ¶áO(W™+ßıjÂà&*áã ÂŞ0¶Á¼}¤z»+û²âçñ'·bºqtär, M¹ÉhĞİh”k`³Q(7~‚Ü–›»4^4ÅaÂkš‚išˆWäúĞ–]WÚó¤.Û}UKrÓª©à¿0»Îğ1YªÙ™ÜjW64q99_ÉÍ§ëÛ/ª§p¬Iğ‹fLy¶ÇXñTÙÍåP‰dNKÁ%ãœë‘Ì¾wß%ÿ¢…~¿
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000009 00000 n 
+0000000074 00000 n 
+0000000471 00000 n 
+0000000660 00000 n 
+0000000849 00000 n 
+0000013104 00000 n 
+0000013276 00000 n 
+0000016652 00000 n 
+0000016824 00000 n 
+0000016849 00000 n 
+0000016997 00000 n 
+0000018954 00000 n 
+0000019057 00000 n 
+0000019155 00000 n 
+trailer
+<<
+/Size 15
+/Root 10 0 R
+/Info 2 0 R
+>>
+startxref
+20314
+%%EOF

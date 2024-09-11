@@ -1,0 +1,402 @@
+%PDF-1.3
+1 0 obj
+<<
+/Kids [ 3 0 R 4 0 R ]
+/Type /Pages
+/Count 2
+>>
+endobj
+2 0 obj
+<<
+/ModDate (D\07220180802091539\05300\04700\047)
+/Subject (Factur\055X Invoice FSO1117A\137P21 dated 2018\05504\05502 issued by BRICORAMA FRANCE)
+/Producer (PyPDF2)
+/Title (BRICORAMA FRANCE\072 Invoice FSO1117A\137P21)
+/Creator (factur\055x Python lib \057 AIFE)
+/Keywords (Invoice\054 Factur\055X)
+/Author (BRICORAMA FRANCE)
+/CreationDate (D\07220180802091539\05300\04700\047)
+>>
+endobj
+3 0 obj
+<<
+/Contents 11 0 R
+/Parent 1 0 R
+/Type /Page
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F2 12 0 R
+/F1 13 0 R
+>>
+>>
+/MediaBox [ 0 0 612 792 ]
+>>
+endobj
+4 0 obj
+<<
+/Contents 14 0 R
+/Parent 1 0 R
+/Type /Page
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F2 12 0 R
+/F1 13 0 R
+>>
+>>
+/MediaBox [ 0 0 612 792 ]
+>>
+endobj
+5 0 obj
+<<
+/Length 25740
+/Type /EmbeddedFile
+/Params <<
+/ModDate (D\07220180802091539\05300\04700\047)
+>>
+/Subtype /text#2Fxml
+>>
+stream
+Ôªø<?xml version='1.0' encoding='UTF-8'?>
+<rsm:CrossIndustryInvoice
+	xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+	xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+	xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+	xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<!-- P21:  facture simple avec pi√®ce-jointe au format docx -->
+	
+	<rsm:ExchangedDocumentContext>
+		<ram:BusinessProcessSpecifiedDocumentContextParameter>
+			<ram:ID>A1</ram:ID>																			<!-- G√©n√©ralit√©s.Cadre (facture simple, cadre de facture de travaux...) -->
+		</ram:BusinessProcessSpecifiedDocumentContextParameter>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+			<ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+		</ram:GuidelineSpecifiedDocumentContextParameter>
+	</rsm:ExchangedDocumentContext>
+	<rsm:ExchangedDocument>
+		<ram:ID>FSO1117A_P21</ram:ID>																	<!-- G√©n√©ralit√©s.Identifiant -->
+		<ram:TypeCode>380</ram:TypeCode>																<!-- G√©n√©ralit√©s.Type (380: facture, 381: avoir)-->
+		<ram:IssueDateTime>
+			<udt:DateTimeString>20180402</udt:DateTimeString>											<!-- G√©n√©ralit√©s.Date √©mission facture -->
+		</ram:IssueDateTime>
+		<ram:IncludedNote>
+			<ram:Content>Note</ram:Content>																<!-- G√©n√©ralit√©s.Note -->
+		</ram:IncludedNote>
+	</rsm:ExchangedDocument>
+	<rsm:SupplyChainTradeTransaction>
+		<ram:IncludedSupplyChainTradeLineItem> 															<!-- bloc Ligne facture -->
+			<ram:AssociatedDocumentLineDocument>
+				<ram:LineID>1</ram:LineID>																<!-- Ligne.Num√©ro -->
+				<ram:LineStatusCode>Type</ram:LineStatusCode>											<!-- Ligne.Type -->
+				<ram:LineStatusReasonCode>Sous type</ram:LineStatusReasonCode>							<!-- Ligne.Sous-type -->
+				<ram:IncludedNote>
+					<ram:Content>Compl√©ment</ram:Content>												<!-- Ligne.Compl√©ment -->
+				</ram:IncludedNote>
+			</ram:AssociatedDocumentLineDocument>
+			<ram:SpecifiedTradeProduct>
+				<ram:GlobalID>1234321</ram:GlobalID>													<!-- Ligne.R√©f√©rence produit -->
+				<ram:Name>CPP</ram:Name>																<!-- Ligne.Nom article -->
+				<ram:Description>un test</ram:Description>												<!-- Ligne.Description -->
+			</ram:SpecifiedTradeProduct>
+			<ram:SpecifiedLineTradeAgreement>
+				<ram:GrossPriceProductTradePrice>
+					<ram:ChargeAmount>0</ram:ChargeAmount>												<!-- Ligne-Charge/remise.Montant base (de calcul de charge/remise) -->
+					<ram:AppliedTradeAllowanceCharge>
+						<ram:ActualAmount>0</ram:ActualAmount>											<!-- Ligne-Charge/remise.Montant charge/remise -->
+					</ram:AppliedTradeAllowanceCharge>
+				</ram:GrossPriceProductTradePrice>
+				<ram:NetPriceProductTradePrice>
+					<ram:ChargeAmount>100</ram:ChargeAmount>											<!-- Ligne.Prix unitaire -->
+				</ram:NetPriceProductTradePrice>
+			</ram:SpecifiedLineTradeAgreement>
+			<ram:SpecifiedLineTradeDelivery>
+				<ram:BilledQuantity unitCode="">1</ram:BilledQuantity>									<!-- Ligne.Quantit√© factur√©e -->
+				<ram:ShipToTradeParty>
+					<ram:GlobalID>Ach√®res</ram:GlobalID>												<!-- Ligne.Identifiant site livraison -->
+				</ram:ShipToTradeParty>
+				<ram:ActualDeliverySupplyChainEvent>
+					<ram:OccurrenceDateTime>
+						<udt:DateTimeString>20180101</udt:DateTimeString>								<!-- Ligne.Date livraison -->
+					</ram:OccurrenceDateTime>
+				</ram:ActualDeliverySupplyChainEvent>
+			</ram:SpecifiedLineTradeDelivery>
+			<ram:SpecifiedLineTradeSettlement>
+				<ram:ApplicableTradeTax>
+					<ram:RateApplicablePercent>20</ram:RateApplicablePercent>							<!-- Ligne.Taux TVA -->
+				</ram:ApplicableTradeTax>
+				<ram:SpecifiedTradeAllowanceCharge>
+					<ram:ChargeIndicator>
+						<udt:IndicatorString>true</udt:IndicatorString>
+					</ram:ChargeIndicator>															
+					<ram:ReasonCode>code</ram:ReasonCode>												<!-- Ligne-Charge/remise.Code de motif de charge/remise -->
+					<ram:Reason>Libell√©</ram:Reason>													<!-- Ligne-Charge/remise.Code de motif de charge/remise -->
+				</ram:SpecifiedTradeAllowanceCharge>
+				<ram:SpecifiedTradeSettlementLineMonetarySummation>
+					<ram:LineTotalAmount>100</ram:LineTotalAmount>										<!-- Ligne.Montant HT -->
+				</ram:SpecifiedTradeSettlementLineMonetarySummation>
+			</ram:SpecifiedLineTradeSettlement>
+		</ram:IncludedSupplyChainTradeLineItem>
+		<ram:ApplicableHeaderTradeAgreement>
+			<ram:SellerTradeParty>			
+				<ram:Name>BRICORAMA FRANCE</ram:Name>													<!-- Fournisseur.Raison sociale -->
+				<ram:Description>Description</ram:Description>											<!-- Fournisseur.Note -->
+				<ram:SpecifiedLegalOrganization>
+					<ram:ID schemeID="1">40668031401116</ram:ID>										<!-- Fournisseur.Identifiant -->
+				</ram:SpecifiedLegalOrganization>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>78260</ram:PostcodeCode>											<!-- Fournisseur.Code postal l√©gal -->
+					<ram:LineOne>Ligne adresse l√©gale</ram:LineOne>										<!-- Fournisseur.Ligne adresse l√©gale -->
+					<ram:CityName>Ville</ram:CityName>													<!-- Fournisseur.Nom commune l√©gal -->
+					<ram:CountryID>FR</ram:CountryID>													<!-- Fournisseur.Code pays l√©gal -->
+				</ram:PostalTradeAddress>
+			</ram:SellerTradeParty> 
+			<!-- Bloc D√©biteur -->
+			<ram:BuyerTradeParty> 
+				<ram:Name>URSSAF Midi-Pyr√©n√©es</ram:Name>												<!-- D√©biteur.Raison sociale -->
+				<ram:Description>Note</ram:Description>													<!-- D√©biteur.Note -->
+				<ram:SpecifiedLegalOrganization>
+					<ram:ID schemeID="0002">53514650090018</ram:ID>										<!-- D√©biteur.Identifiant -->
+				</ram:SpecifiedLegalOrganization>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>78700</ram:PostcodeCode>											<!-- D√©biteur.Code postal l√©gal -->
+					<ram:LineOne>Ligne adresse l√©gale</ram:LineOne>										<!-- D√©biteur.Ligne adresse l√©gale -->
+					<ram:CityName>Ville</ram:CityName>													<!-- D√©biteur.Nom commune l√©gal -->
+					<ram:CountryID>FR</ram:CountryID>													<!-- D√©biteur.Code pays l√©gal -->
+				</ram:PostalTradeAddress>
+			</ram:BuyerTradeParty> 
+			<!-- Bloc Pi√®ceJointe -->
+			<ram:AdditionalReferencedDocument>
+				<ram:IssuerAssignedID>PJ1.zip</ram:IssuerAssignedID>																							
+				<ram:AttachmentBinaryObject mimeCode="application/vnd.openxmlformats-officedocument.wordprocessingml.document">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</ram:AttachmentBinaryObject>
+			</ram:AdditionalReferencedDocument>
+		</ram:ApplicableHeaderTradeAgreement>
+		<!-- Bloc SiteLivraison -->
+		<ram:ApplicableHeaderTradeDelivery>
+			<ram:ShipToTradeParty>
+				<ram:ID>SiteLivraison</ram:ID>															<!-- SiteLivraison.Identifiant -->
+				<ram:Name>Nom</ram:Name>																<!-- SiteLivraison.Nom -->
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>Code postal l√©gal</ram:PostcodeCode>								<!-- SiteLivraison.Code Postal -->
+					<ram:LineOne>Ligne adresse l√©gal</ram:LineOne>										<!-- SiteLivraison.Ligne adresse -->
+					<ram:CityName>Ville</ram:CityName>													<!-- SiteLivraison.Nom commune -->
+					<ram:CountryID>FR</ram:CountryID>													<!-- SiteLivraison.Code pays -->
+				</ram:PostalTradeAddress>
+			</ram:ShipToTradeParty>
+		</ram:ApplicableHeaderTradeDelivery> 
+		<ram:ApplicableHeaderTradeSettlement>
+			<ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>										<!-- Devise -->
+			<ram:SpecifiedTradeSettlementPaymentMeans>
+				<ram:TypeCode>48</ram:TypeCode>															<!-- Paiement.Mode de paiement -->
+				<ram:Information>Notes</ram:Information>												<!-- Paiement.Note -->
+				<ram:PayeePartyCreditorFinancialAccount>
+					<ram:IBANID>FR7610057191370188512730284</ram:IBANID>								<!-- Paiement.Identifiant compte bancaire -->
+				</ram:PayeePartyCreditorFinancialAccount>
+			</ram:SpecifiedTradeSettlementPaymentMeans>
+			<!-- R√©capitulatifTaxes -->
+			<ram:ApplicableTradeTax>
+				<ram:CalculatedAmount>20.00</ram:CalculatedAmount>										<!-- R√©capitulatifTaxes.Montant Taxes -->
+				<ram:BasisAmount>80.00</ram:BasisAmount>												<!-- R√©capitulatifTaxes.Montant de base (pour le calcul de TVA) -->
+				<ram:CategoryCode>S</ram:CategoryCode>													<!-- R√©capitulatifTaxes.Type taxe - balise sp√©cifique aux formats CII16B/FacturX -->
+				<ram:DueDateTypeCode>72</ram:DueDateTypeCode>											<!-- Fournisseur.R√©gime TVA. Ici, "72" = Encaissement -->
+				<ram:RateApplicablePercent>20.00</ram:RateApplicablePercent>							<!-- R√©capitulatifTaxes.Taux -->
+			</ram:ApplicableTradeTax>
+			<ram:BillingSpecifiedPeriod>
+				<ram:Description>Description de la p√©riode</ram:Description>							<!-- G√©n√©ralit√©s.Description de p√©riode -->
+				<ram:StartDateTime>
+					<udt:DateTimeString>20170101</udt:DateTimeString>									<!-- G√©n√©ralit√©s.D√©but de p√©riode -->
+				</ram:StartDateTime>
+				<ram:EndDateTime>
+					<udt:DateTimeString>20171231</udt:DateTimeString>									<!-- G√©n√©ralit√©s.Fin de p√©riode -->
+				</ram:EndDateTime>
+			</ram:BillingSpecifiedPeriod>
+			<ram:SpecifiedTradeAllowanceCharge>
+				<ram:ChargeIndicator>
+					<udt:IndicatorString>true</udt:IndicatorString>
+				</ram:ChargeIndicator>
+				<ram:BasisAmount>700.00</ram:BasisAmount>												<!-- Charge/remise.Montant de base -->			
+				<ram:ActualAmount>15.00</ram:ActualAmount>												<!-- Charge/remise.Montant de charge/remise -->
+			</ram:SpecifiedTradeAllowanceCharge>
+			<ram:SpecifiedTradePaymentTerms> 
+				<ram:DueDateDateTime>
+					<udt:DateTimeString>20180906</udt:DateTimeString>									<!-- Paiement.Date √©ch√©ance -->
+				</ram:DueDateDateTime>
+			</ram:SpecifiedTradePaymentTerms>
+			<ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+				<ram:LineTotalAmount>100</ram:LineTotalAmount>
+				<ram:ChargeTotalAmount>0</ram:ChargeTotalAmount>										<!-- G√©n√©ralit√©s.Montant charges -->
+				<ram:AllowanceTotalAmount>0</ram:AllowanceTotalAmount>									<!-- G√©n√©ralit√©s.Montant remises -->
+				<ram:TaxBasisTotalAmount>100</ram:TaxBasisTotalAmount>									<!-- G√©n√©ralit√©s.Montant HT -->
+				<ram:TaxTotalAmount>20</ram:TaxTotalAmount>												<!-- G√©n√©ralit√©s.Montant Taxes -->
+				<ram:GrandTotalAmount>120</ram:GrandTotalAmount>										<!-- G√©n√©ralit√©s.Montant TTC -->
+				<ram:TotalPrepaidAmount>0</ram:TotalPrepaidAmount>										<!-- G√©n√©ralit√©s.Montant √† d√©duire -->
+				<ram:DuePayableAmount>120</ram:DuePayableAmount>										<!-- G√©n√©ralit√©s.Montant net √† payer -->
+			</ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+		</ram:ApplicableHeaderTradeSettlement>
+	</rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
+endstream
+endobj
+6 0 obj
+<<
+/Type /Filespec
+/AFRelationship /Alternative
+/F (factur\055x\056xml)
+/Desc (Factur\055X Invoice)
+/UF (factur\055x\056xml)
+/EF <<
+/F 5 0 R
+/UF 5 0 R
+>>
+>>
+endobj
+7 0 obj
+<<
+/Length 3324
+>>
+stream
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description xmlns:pdfaid="http://www.aiim.org/pdfa/ns/id/" rdf:about=""><pdfaid:part>3</pdfaid:part><pdfaid:conformance>B</pdfaid:conformance></rdf:Description><rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about=""><dc:title><rdf:Alt><rdf:li xml:lang="x-default">BRICORAMA FRANCE: Invoice FSO1117A_P21</rdf:li></rdf:Alt></dc:title><dc:creator><rdf:Seq><rdf:li>BRICORAMA FRANCE</rdf:li></rdf:Seq></dc:creator><dc:description><rdf:Alt><rdf:li xml:lang="x-default">Factur-X Invoice FSO1117A_P21 dated 2018-04-02 issued by BRICORAMA FRANCE</rdf:li></rdf:Alt></dc:description></rdf:Description><rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about=""><pdf:Producer>PyPDF2</pdf:Producer></rdf:Description><rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about=""><xmp:CreatorTool>factur-x python lib by Alexis de Lattre</xmp:CreatorTool><xmp:CreateDate>2018-08-02T09:15:39+00:00</xmp:CreateDate><xmp:ModifyDate>2018-08-02T09:15:39+00:00</xmp:ModifyDate></rdf:Description><rdf:Description xmlns:pdfaExtension="http://www.aiim.org/pdfa/ns/extension/" xmlns:pdfaSchema="http://www.aiim.org/pdfa/ns/schema#" xmlns:pdfaProperty="http://www.aiim.org/pdfa/ns/property#" rdf:about="">
+
+	 <pdfaExtension:schemas>
+		<rdf:Bag>
+		   <rdf:li rdf:parseType="Resource">
+			  <pdfaSchema:schema>Factur-X PDFA Extension Schema</pdfaSchema:schema>
+			  <pdfaSchema:namespaceURI>urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#</pdfaSchema:namespaceURI>
+			  <pdfaSchema:prefix>fx</pdfaSchema:prefix>
+			  <pdfaSchema:property>
+				 <rdf:Seq>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>DocumentFileName</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>name of the embedded XML invoice file</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>DocumentType</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>INVOICE</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>Version</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>The actual version of the Factur-X XML schema</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>ConformanceLevel</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>The conformance level of the embedded Factur-X data</pdfaProperty:description>
+					</rdf:li>
+				 </rdf:Seq>
+			  </pdfaSchema:property>
+		   </rdf:li>
+		</rdf:Bag>
+	 </pdfaExtension:schemas>
+  </rdf:Description>
+<rdf:Description xmlns:fx="urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#" rdf:about="" fx:ConformanceLevel="EN 16931" fx:DocumentFileName="factur-x.xml" fx:DocumentType="INVOICE" fx:Version="1.0"/></rdf:RDF>
+
+endstream
+endobj
+8 0 obj
+<<
+/Type /Filespec
+/AFRelationship /Alternative
+/F (factur\055x\056xml)
+/Desc (Factur\055X Invoice)
+/UF (factur\055x\056xml)
+/EF <<
+/F 5 0 R
+/UF 5 0 R
+>>
+>>
+endobj
+9 0 obj
+[ 8 0 R ]
+endobj
+10 0 obj
+<<
+/AF 9 0 R
+/Type /Catalog
+/Pages 1 0 R
+/Names <<
+/EmbeddedFiles <<
+/Names [ (factur\055x\056xml) 6 0 R ]
+>>
+>>
+/Metadata 7 0 R
+>>
+endobj
+11 0 obj
+<<
+/Length 1686
+/Filter /FlateDecode
+>>
+stream
+xú•X…r€FΩ„+Êπ*ÕÇôtìe©bWº—Lràr`âêLôÌ¯o¯i9Ü˜|@∫gCöÑƒ≤ÀFK›Ôı6=|…^3FL)»pú]≥ŸóåQ&ç"ﬂ2A^√/?gúë7Ÿü12Œ§&Fi2ÀîqOS˚$5e9<ÀŒ£˚˝ßÏèl8¯gyóÂÇòúS	¢T4◊^úÇòS√AdT)êsA¡çF¸î›e‡gËÄ˘Á†ÆÄÒ≠ë—ºUüµ~l%@o‚xCùr•ë f6œ© "YR¶–'ÚÇrá"©‡€≤SoIÀúÛÇ§ˇcjèÑwN6%éä◊∏≠|ZY$S¥‰6C¬&Ã…H∆mF@∂‰π≤)¢À±5—Z”ΩW˛1(km®V-V#€ ™ÿ∞°Mh†à5u<Pß\iMeçÀµ§⁄6ó5`ô¬Z1Lu*{ı>ï=˛¯ j-mvõ¸»n~$Â* ∞£+–Ã}}¸sPW†!Ú≠ë}ec”@ú%@ù~Í8ﬁPß\i$› jÕ±ö‘√…6:J}*;ıﬁï}:¸Òïm≤˚√yÂÿãqmçˆCUÖÁF›ò0ZêCmc”¥-∫ƒ±e⁄T]G∂Ÿ“XC¬$,d;/r£⁄Å2ÖΩ"$/©*ÕÉ:„¥¥©˜pNnMò@fÑò?¸	gä˚êÜ|Ëp∆Ò4ç#8e»°iÅ.x1ÃO•U[¢UÓ—€«ÅŸŸivwßÜ„qärÎÂ(∑⁄(*Û∂<^nl4¥+=`#DıM∂§ÎD#m≤ÆS	i'§f~	ííÊ‹Ì<BrÍ◊6÷ºVüôı»ßUmLÅK]RoDËxc)LÃm—)˜Â8#[4!O‡UÆ›Ø
+Î˘43%ç$€±{[Œ;}\A#0/¢uG}÷u&eÎ`E‘âÎm¢:li$P0ºË$å#ÅÏRA≤Dê·,(EÖŸXÑÇ7èˆdym¡®`Ì¡úË¥q÷ò(»wb®#Æ(ÊMΩƒ)YÖÉÄÁr”R+∏È¨+N_™"5∑Í¡ÒÄ’“˙ ◊!∂ô%˛lq¶êçˇÉ)a√˚ÊÈÏ¶É·m∆ÌQ‡ƒæåIxÔ$√Yvr5∫©WÀä\-VÀ˘‰·°Z-…ı…’«wú3}˝åú¡8\kå?g¸Ÿ3æ∏Ó∆Â%å\cìX_Œ—¡ÿ»"«]µ/gU]˝#ÖÀwâóõ5ö◊ìz≥~ΩZN∆ì/´™kúF¶§tﬁΩº∫x78sNÆÁo/.˜á¶∆©ùÈ∫áèpJôé}ºXÃf’Úf2öˆR⁄ó€'y	õv¶øNÓÊçóîïL7w	ÛNsfpC@sSÕ÷‰˜…Ù∞ô*5ﬁÑ∂°zπ©
+»Yi>æ\…ŸzoR‡⁄ïelï3≠&yŒ8Áz/ùˇÇ†US˙Cıì–ï∏=¢∫òN™yΩóO¢]94’Â6ÕèÙ5nÀ:ŒŸõ	©¸hc¶§‚πVåïåÒ¢'åaﬂú|Ùk¨ãrá>§Æ£^\™\M≤;]÷‰˝ã¡ÂÀW8TcBäıÛı˚Õr≤W˛ﬁZΩQ=YÃ…xµ&åüvßM ÿÊ
+‚…ç•:≈9E÷#∞ñ¸î+ÔÉ‡ö—"'ä…ÊXüëóõ˚ˇjr?Zí’ú‹F3q¸”j¸¨ˇØ‡\ï¥x∞π›OÍ’"ºÌ&‹ﬁ‚ë≠Œ°π()º£°ÈpQè¶‰ó!§˙‰Ú∑¡ı≥˝ˆä€Ø'gÏg∆˙∞∫--ÎpÙwı–õXH‹å#±Õõ¥ó£Öw¶“Ïj∆ù^ ¢§‹D^™Ÿ‰˝ÏÈfAïåQzfGò	eƒ{Òi¥º{L~qìouot≈C~ËL∏LÏ1Í•Ω™…çÛf/û`–04~)µÅ|ø?p¡6À{dÚf1ØG&°_Ú‡\Œ»•j}∂˛Aë{%é∏Ä´^≠$`—™w+â"æ·áè<gﬂ—Ôªi›ßl¥9'„Õx5Å	y}2ﬁ|˛&œ˜l]èÎ©∞Ø∞L„] Œj˘ÿ∏[Ä]qßmdøé∏N·E˙≠„’9£⁄©ø]‘VkÅhπì†‹°\®Pπ˜£I5ÉÎ›Œ˝8a∞5¡y™cAs·]\=êØ¯J\ÛÛºŸæ.j®ÓÚﬂª©£}Ö”C¶\ÛLü≤Ø©˝w∂ßÇ€Jv◊
+|˛ê˝¨¢ó
+endstream
+endobj
+12 0 obj
+<<
+/Encoding /WinAnsiEncoding
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+>>
+endobj
+13 0 obj
+<<
+/Encoding /WinAnsiEncoding
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+>>
+endobj
+14 0 obj
+<<
+/Length 1036
+/Filter /FlateDecode
+>>
+stream
+xúùWÕn„6æÎ)xkÏrIÒOÍmmQh—,åˆPÙ 8N¢Ö%geπ›«…£ıö∑Ëêî»—®pî"áê|c˛˘sÒaWÊÍíÌnãÔw≈MÒπ\(gÿﬂE…~Ç?R∞üã?˛Ï∂Pñ9cYWG«0Rñcµ∆œäﬂã>Îí9Ì∏∏JVÅ@êI(öëÇ◊Z ä—ˇ√˝ˇ ºFR
+‰«»·&Ãˇ-1Ø±5/L-7Ê∫‰MΩ,Ú¥4;’ äKL5œ=6ówŸ¡JÖ%QÏ75Ö®– AUq_axÂu°@Èyz,l≈M¶Øu§3Y;l%∏Ù∂=YúÃ’~Vôƒï¶I{ÅM Däpee‚|÷&b$áá;¯¡ïP~Q$}%J^"àì+Ü	2˚èÑ≥ÅXüLtã –-˝¨Ùíß	fTëäöLa,ó∏	∆pÖ0Jò5GƒÃ1& Ï¬,]DFA:bj-J)ë	$π ™4W§p‹"
+-µﬂDyAJ≈≠B6Lµ‚ò0)I§Ã.™ÖãâëAêéòZãRJdÇIªí®“\ë"`3Öu\„^XÀ¬hi◊ìvwƒfvÈ"2í “SkQJâL– …Q•π"E≈kDa`Äæ›µ¯†ÇsàRDH 	≥áz·a"$1§#ñ÷öî2{ )fTìÜäñ◊à¿©®–XáÆ†CÄÃ!"_v‡ñ"âê›“œZêf$Br@i"O Ø®w?¿Õ∞›]!√sA2Sz÷≤ÊñÌ∫‚Î˜√ÿÓèá3öqlˆœg÷\ÿ˛‘=é∂?∂á~¸f˜…ø¬&:ã…¸Í¨¡†\ªﬂﬁ/kâ¥3·“ ‹é›sÍ⁄æ€SœnÏ¯UÌ\•Q¢WGÎ&
+ﬂ\ö~l«g∂'∏´ÓÆŸèó·˘9[Ü”9€˛uhø∞KﬂéM;\«ÍRÑ”ÏµV.Yı›iˇöˆ|ÍØCù
+á‹K“≈ØÂ46«Ù"e]{~!‹™,W*ÄﬁÌö·˛: îí/∫Ì˝∏√(IñYxyÅúàM|Z÷“e_*±—ñdoØî—aadƒu-·qRmØ7pi©Wî√π˛7°9∫ZÆ´KVØkuÌü,sÔ/_ÿÌÖù[ÿÔxëΩaèßÀ¿⁄˛Ó4tqá~ª¡á™7[.+nˇ£z}lƒÔ M ?óqµ`hç
+◊qoÑÿ‡
+~}îvª+ˇc%Æ„èa«úß=pfˇ∞cÌºÔõåf›çFÖÛ6Ör»/áÕ›À/ö*kx¨f‡Fö‚[ˆ‰ˇÆ√‡>“ ´}≤˜‰ÔüÊ±ıß¬Ì·âia·öSR)•ù»¸Êõ‚_–Øe~
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000009 00000 n 
+0000000074 00000 n 
+0000000471 00000 n 
+0000000660 00000 n 
+0000000849 00000 n 
+0000026744 00000 n 
+0000026916 00000 n 
+0000030292 00000 n 
+0000030464 00000 n 
+0000030489 00000 n 
+0000030637 00000 n 
+0000032397 00000 n 
+0000032500 00000 n 
+0000032598 00000 n 
+trailer
+<<
+/Size 15
+/Root 10 0 R
+/Info 2 0 R
+>>
+startxref
+33708
+%%EOF

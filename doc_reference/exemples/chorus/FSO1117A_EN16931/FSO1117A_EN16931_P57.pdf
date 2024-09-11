@@ -1,0 +1,378 @@
+%PDF-1.3
+1 0 obj
+<<
+/Kids [ 3 0 R 4 0 R ]
+/Type /Pages
+/Count 2
+>>
+endobj
+2 0 obj
+<<
+/ModDate (D\07220180802091544\05300\04700\047)
+/Subject (Factur\055X Invoice FSO1117A\137P57 dated 2018\05504\05518 issued by Samsung Mobile Phone)
+/Producer (PyPDF2)
+/Title (Samsung Mobile Phone\072 Invoice FSO1117A\137P57)
+/Creator (factur\055x Python lib \057 AIFE)
+/Keywords (Invoice\054 Factur\055X)
+/Author (Samsung Mobile Phone)
+/CreationDate (D\07220180802091544\05300\04700\047)
+>>
+endobj
+3 0 obj
+<<
+/Contents 11 0 R
+/Parent 1 0 R
+/Type /Page
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F2 12 0 R
+/F1 13 0 R
+>>
+>>
+/MediaBox [ 0 0 612 792 ]
+>>
+endobj
+4 0 obj
+<<
+/Contents 14 0 R
+/Parent 1 0 R
+/Type /Page
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F2 12 0 R
+/F1 13 0 R
+>>
+>>
+/MediaBox [ 0 0 612 792 ]
+>>
+endobj
+5 0 obj
+<<
+/Length 9280
+/Type /EmbeddedFile
+/Params <<
+/ModDate (D\07220180802091544\05300\04700\047)
+>>
+/Subtype /text#2Fxml
+>>
+stream
+<rsm:CrossIndustryInvoice xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<!-- P57: Facture de travaux avec valideur A13: Projet de D&#233;compte Mensuel d'un cotraitant - &#233;metteur type HORS_UE, valideur requis -->
+	
+	<rsm:ExchangedDocumentContext>
+		<ram:BusinessProcessSpecifiedDocumentContextParameter>
+			<ram:ID>A13</ram:ID>																		<!-- G&#233;n&#233;ralit&#233;s.Cadre (facture simple, cadre de facture de travaux...) -->
+		</ram:BusinessProcessSpecifiedDocumentContextParameter>
+	<ram:GuidelineSpecifiedDocumentContextParameter><ram:ID>urn:cen.eu:en16931:2017</ram:ID></ram:GuidelineSpecifiedDocumentContextParameter></rsm:ExchangedDocumentContext>
+	<rsm:ExchangedDocument>
+		<ram:ID>FSO1117A_P57</ram:ID>																	<!-- G&#233;n&#233;ralit&#233;s.Identifiant -->
+		<ram:TypeCode>380</ram:TypeCode>																<!-- G&#233;n&#233;ralit&#233;s.Type (380: facture, 381: avoir)-->
+		<ram:IssueDateTime>
+			<udt:DateTimeString>20180418</udt:DateTimeString>											<!-- G&#233;n&#233;ralit&#233;s.Date &#233;mission facture -->
+		</ram:IssueDateTime>
+		<ram:IncludedNote>
+		</ram:IncludedNote>
+	</rsm:ExchangedDocument>
+	<rsm:SupplyChainTradeTransaction>
+		<ram:IncludedSupplyChainTradeLineItem> 															<!-- bloc Ligne facture -->
+			<ram:AssociatedDocumentLineDocument>
+				<ram:LineID>1</ram:LineID>																<!-- Ligne.Num&#233;ro -->
+			</ram:AssociatedDocumentLineDocument>
+			<ram:SpecifiedLineTradeAgreement>
+				<ram:GrossPriceProductTradePrice>
+					<ram:ChargeAmount>0</ram:ChargeAmount>												<!-- Ligne-Charge/remise.Montant base (de calcul de charge/remise) -->
+				</ram:GrossPriceProductTradePrice>
+				<ram:NetPriceProductTradePrice>
+					<ram:ChargeAmount>100</ram:ChargeAmount>											<!-- Ligne.Prix unitaire -->
+				</ram:NetPriceProductTradePrice>
+			</ram:SpecifiedLineTradeAgreement>
+			<ram:SpecifiedLineTradeDelivery>
+				<ram:BilledQuantity>1</ram:BilledQuantity>												<!-- Ligne.Quantit&#233; factur&#233;e -->
+				<ram:ShipToTradeParty>
+					<ram:GlobalID>Ach&#232;res</ram:GlobalID>												<!-- Ligne.Identifiant site livraison -->
+				</ram:ShipToTradeParty>
+				<ram:ActualDeliverySupplyChainEvent>
+					<ram:OccurrenceDateTime>
+						<udt:DateTimeString>20180101</udt:DateTimeString>								<!-- Ligne.Date livraison -->
+					</ram:OccurrenceDateTime>
+				</ram:ActualDeliverySupplyChainEvent>
+			</ram:SpecifiedLineTradeDelivery>
+			<ram:SpecifiedLineTradeSettlement>
+				<ram:ApplicableTradeTax>
+					<ram:RateApplicablePercent>20</ram:RateApplicablePercent>							<!-- Ligne.Taux TVA -->
+				</ram:ApplicableTradeTax>
+				<ram:SpecifiedTradeAllowanceCharge>
+					<ram:ChargeIndicator>
+						<udt:IndicatorString>true</udt:IndicatorString>
+					</ram:ChargeIndicator>
+				</ram:SpecifiedTradeAllowanceCharge>
+				<ram:SpecifiedTradeSettlementLineMonetarySummation>
+					<ram:LineTotalAmount>100</ram:LineTotalAmount>										<!-- Ligne.Montant HT -->
+				</ram:SpecifiedTradeSettlementLineMonetarySummation>
+			</ram:SpecifiedLineTradeSettlement>
+		</ram:IncludedSupplyChainTradeLineItem>
+		<ram:ApplicableHeaderTradeAgreement>
+			<ram:SellerTradeParty>			
+				<ram:Name>Samsung Mobile Phone</ram:Name>												<!-- Fournisseur.Raison sociale -->
+				<ram:SpecifiedLegalOrganization>
+					<ram:ID schemeID="ETR">KRSAMSUNGMOBILEPHO</ram:ID>									<!-- Fournisseur.Identifiant -->
+				</ram:SpecifiedLegalOrganization>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>78260</ram:PostcodeCode>											<!-- Fournisseur.Code postal l&#233;gal -->
+					<ram:LineOne>Ligne adresse l&#233;gale</ram:LineOne>										<!-- Fournisseur.Ligne adresse l&#233;gale -->
+					<ram:CityName>Ville</ram:CityName>													<!-- Fournisseur.Nom commune l&#233;gal -->
+					<ram:CountryID>FR</ram:CountryID>													<!-- Fournisseur.Code pays l&#233;gal -->
+				</ram:PostalTradeAddress>
+			</ram:SellerTradeParty> 
+			<!-- Bloc D&#233;biteur -->
+			<ram:BuyerTradeParty> 
+				<ram:Name>URSSAF Midi-Pyr&#233;n&#233;es</ram:Name>												<!-- D&#233;biteur.Raison sociale -->
+				<ram:SpecifiedLegalOrganization>
+					<ram:ID schemeID="0002">53514650090018</ram:ID>										<!-- D&#233;biteur.Identifiant -->
+				</ram:SpecifiedLegalOrganization>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>78700</ram:PostcodeCode>											<!-- D&#233;biteur.Code postal l&#233;gal -->
+					<ram:LineOne>Ligne adresse l&#233;gale</ram:LineOne>										<!-- D&#233;biteur.Ligne adresse l&#233;gale -->
+					<ram:CityName>Ville</ram:CityName>													<!-- D&#233;biteur.Nom commune l&#233;gal -->
+					<ram:CountryID>FR</ram:CountryID>													<!-- D&#233;biteur.Code pays l&#233;gal -->
+				</ram:PostalTradeAddress>
+			</ram:BuyerTradeParty> 
+		</ram:ApplicableHeaderTradeAgreement>
+		<!-- Bloc SiteLivraison -->
+		<ram:ApplicableHeaderTradeDelivery>
+			<ram:ShipToTradeParty>
+				<ram:ID>SiteLivraison</ram:ID>															<!-- SiteLivraison.Identifiant -->
+				<ram:Name>Nom</ram:Name>																<!-- SiteLivraison.Nom -->
+			</ram:ShipToTradeParty>
+		</ram:ApplicableHeaderTradeDelivery> 
+		<ram:ApplicableHeaderTradeSettlement>
+			<ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>										<!-- Devise -->
+			<!-- Bloc Valideur -->
+			<ram:InvoiceeTradeParty>
+				<ram:Name>PRO SHOP CONTREXEVILLE</ram:Name>												<!-- Valideur.Raison sociale -->
+				<ram:SpecifiedLegalOrganization>
+					<ram:ID schemeID="1">81034732800017</ram:ID>										<!-- Valideur.Identifiant -->
+				</ram:SpecifiedLegalOrganization>
+				<ram:DefinedTradeContact>
+					<ram:PersonName>Nom contact Valideur</ram:PersonName>								<!-- Valideur.Nom contact -->
+					<ram:TelephoneUniversalCommunication>
+						<ram:CompleteNumber>0104546573</ram:CompleteNumber>								<!-- Valideur.T&#233;l&#233;phone contact -->
+					</ram:TelephoneUniversalCommunication>
+					<ram:FaxUniversalCommunication>
+						<ram:CompleteNumber>0104546575</ram:CompleteNumber>								<!-- Valideur.T&#233;l&#233;copie contact -->
+					</ram:FaxUniversalCommunication>
+					<ram:EmailURIUniversalCommunication>
+						<ram:URIID>valideur@hotmail.com</ram:URIID>										<!-- Valideur.Courriel contact -->
+					</ram:EmailURIUniversalCommunication>
+				</ram:DefinedTradeContact>
+				<ram:PostalTradeAddress>
+					<ram:PostcodeCode>78700</ram:PostcodeCode>											<!-- Valideur.Code postal l&#233;gal -->
+					<ram:LineOne>Ligne adresse l&#233;gale</ram:LineOne>										<!-- Valideur.Ligne adresse l&#233;gale -->
+					<ram:CityName>Ville</ram:CityName>													<!-- Valideur.Nom commune l&#233;gal -->
+					<ram:CountryID>FR</ram:CountryID>													<!-- Valideur.Code pays -->
+				</ram:PostalTradeAddress>
+			</ram:InvoiceeTradeParty>	
+			<ram:SpecifiedTradeSettlementPaymentMeans>
+				<ram:TypeCode>42</ram:TypeCode>															<!-- Paiement.Mode de paiement -->
+				<ram:PayeePartyCreditorFinancialAccount>
+					<ram:IBANID>FR7610057191370188512730284</ram:IBANID>								<!-- Paiement.Identifiant compte bancaire -->
+				</ram:PayeePartyCreditorFinancialAccount>
+			</ram:SpecifiedTradeSettlementPaymentMeans>
+			<!-- R&#233;capitulatifTaxes -->
+			<ram:ApplicableTradeTax>
+				<ram:CalculatedAmount>20.00</ram:CalculatedAmount>										<!-- R&#233;capitulatifTaxes.Montant Taxes -->
+				<ram:BasisAmount>80.00</ram:BasisAmount>												<!-- R&#233;capitulatifTaxes.Montant de base (pour le calcul de TVA) -->
+				<ram:CategoryCode>S</ram:CategoryCode>													<!-- R&#233;capitulatifTaxes.Type taxe - balise sp&#233;cifique aux formats CII16B/FacturX -->
+				<ram:DueDateTypeCode>72</ram:DueDateTypeCode>											<!-- Fournisseur.R&#233;gime TVA. Ici, "72" = Encaissement -->
+				<ram:RateApplicablePercent>20.00</ram:RateApplicablePercent>							<!-- R&#233;capitulatifTaxes.Taux -->
+			</ram:ApplicableTradeTax>
+			<ram:SpecifiedTradeAllowanceCharge>
+				<ram:ChargeIndicator>
+					<udt:IndicatorString>true</udt:IndicatorString>
+				</ram:ChargeIndicator>	
+				<ram:ActualAmount>15.00</ram:ActualAmount>												<!-- Charge/remise.Montant de charge/remise -->
+			</ram:SpecifiedTradeAllowanceCharge>
+			<ram:SpecifiedTradePaymentTerms> 
+				<ram:DueDateDateTime>
+					<udt:DateTimeString>20180906</udt:DateTimeString>									<!-- Paiement.Date &#233;ch&#233;ance -->
+				</ram:DueDateDateTime>
+			</ram:SpecifiedTradePaymentTerms>
+			<ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+				<ram:LineTotalAmount>100</ram:LineTotalAmount>
+				<ram:TaxBasisTotalAmount>100</ram:TaxBasisTotalAmount>									<!-- G&#233;n&#233;ralit&#233;s.Montant HT -->
+				<ram:GrandTotalAmount>120</ram:GrandTotalAmount>										<!-- G&#233;n&#233;ralit&#233;s.Montant TTC -->
+				<ram:DuePayableAmount>120</ram:DuePayableAmount>										<!-- G&#233;n&#233;ralit&#233;s.Montant net &#224; payer -->
+			</ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+		</ram:ApplicableHeaderTradeSettlement>
+	</rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
+
+endstream
+endobj
+6 0 obj
+<<
+/Type /Filespec
+/AFRelationship /Alternative
+/F (factur\055x\056xml)
+/Desc (Factur\055X Invoice)
+/UF (factur\055x\056xml)
+/EF <<
+/F 5 0 R
+/UF 5 0 R
+>>
+>>
+endobj
+7 0 obj
+<<
+/Length 3336
+>>
+stream
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description xmlns:pdfaid="http://www.aiim.org/pdfa/ns/id/" rdf:about=""><pdfaid:part>3</pdfaid:part><pdfaid:conformance>B</pdfaid:conformance></rdf:Description><rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/" rdf:about=""><dc:title><rdf:Alt><rdf:li xml:lang="x-default">Samsung Mobile Phone: Invoice FSO1117A_P57</rdf:li></rdf:Alt></dc:title><dc:creator><rdf:Seq><rdf:li>Samsung Mobile Phone</rdf:li></rdf:Seq></dc:creator><dc:description><rdf:Alt><rdf:li xml:lang="x-default">Factur-X Invoice FSO1117A_P57 dated 2018-04-18 issued by Samsung Mobile Phone</rdf:li></rdf:Alt></dc:description></rdf:Description><rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about=""><pdf:Producer>PyPDF2</pdf:Producer></rdf:Description><rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about=""><xmp:CreatorTool>factur-x python lib by Alexis de Lattre</xmp:CreatorTool><xmp:CreateDate>2018-08-02T09:15:44+00:00</xmp:CreateDate><xmp:ModifyDate>2018-08-02T09:15:44+00:00</xmp:ModifyDate></rdf:Description><rdf:Description xmlns:pdfaExtension="http://www.aiim.org/pdfa/ns/extension/" xmlns:pdfaSchema="http://www.aiim.org/pdfa/ns/schema#" xmlns:pdfaProperty="http://www.aiim.org/pdfa/ns/property#" rdf:about="">
+
+	 <pdfaExtension:schemas>
+		<rdf:Bag>
+		   <rdf:li rdf:parseType="Resource">
+			  <pdfaSchema:schema>Factur-X PDFA Extension Schema</pdfaSchema:schema>
+			  <pdfaSchema:namespaceURI>urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#</pdfaSchema:namespaceURI>
+			  <pdfaSchema:prefix>fx</pdfaSchema:prefix>
+			  <pdfaSchema:property>
+				 <rdf:Seq>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>DocumentFileName</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>name of the embedded XML invoice file</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>DocumentType</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>INVOICE</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>Version</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>The actual version of the Factur-X XML schema</pdfaProperty:description>
+					</rdf:li>
+					<rdf:li rdf:parseType="Resource">
+					   <pdfaProperty:name>ConformanceLevel</pdfaProperty:name>
+					   <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+					   <pdfaProperty:category>external</pdfaProperty:category>
+					   <pdfaProperty:description>The conformance level of the embedded Factur-X data</pdfaProperty:description>
+					</rdf:li>
+				 </rdf:Seq>
+			  </pdfaSchema:property>
+		   </rdf:li>
+		</rdf:Bag>
+	 </pdfaExtension:schemas>
+  </rdf:Description>
+<rdf:Description xmlns:fx="urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#" rdf:about="" fx:ConformanceLevel="EN 16931" fx:DocumentFileName="factur-x.xml" fx:DocumentType="INVOICE" fx:Version="1.0"/></rdf:RDF>
+
+endstream
+endobj
+8 0 obj
+<<
+/Type /Filespec
+/AFRelationship /Alternative
+/F (factur\055x\056xml)
+/Desc (Factur\055X Invoice)
+/UF (factur\055x\056xml)
+/EF <<
+/F 5 0 R
+/UF 5 0 R
+>>
+>>
+endobj
+9 0 obj
+[ 8 0 R ]
+endobj
+10 0 obj
+<<
+/AF 9 0 R
+/Type /Catalog
+/Pages 1 0 R
+/Names <<
+/EmbeddedFiles <<
+/Names [ (factur\055x\056xml) 6 0 R ]
+>>
+>>
+/Metadata 7 0 R
+>>
+endobj
+11 0 obj
+<<
+/Length 1842
+/Filter /FlateDecode
+>>
+stream
+xœ¥YÛrÛ6}çWà­ÉL‹àNÒo±#7i}‹­¤©û Ú´ÍŒ.,¥Íßøóê÷~@W"*Öd&âF{ÎYì. ò¹Ø•5CÃëb0,ŞŸ‚	/%ú»`èøòSA	:.şø“ ë‚+TJ…&…,íÓØ<q…‰€g<ÚïïŠßŠ)ğè?óÛB0T
+Š9p°Zb¡œ9Sà’‚I°”`†!Œ`Ş7!$ÁT¹gï®Íº#ó¦wÎ“.Š™”&Í¢º™R¾
+Í ³*f ÃkLL Ö¤¦Ê 8ftÕ¶î!‰¸”V(ÿÔiİ‘ŞÊ2®oWõ¼ªZLâšš1“/kk1j2¶Ò$Ü›6Å¢”‚N4›}ôÎJ•XÉ+Ø¦®2ÙL&#ŠTóÀ½t®•¯#T¶´¹æXéÔYSWYÑ©Îmç¾Mew¤ß½²Jq“İæ‡»è2ìÌ(Ã<…«{öî<˜èØ‚í*C½p&”%ı”¤s­|%ie•¢ºBêag—*J}n[÷­+û|úİ+²ûÍ¸ˆrìÌ¸¶¥ÂF^ÓÙçà^–˜G Ø¾¶14o‹T8FæM•²ª–¯%¨«ğ$Å«Wİ 	f‚P&¥]€{öîÚ¬XÇl§Cƒr¦”1%IOcâ¹Z¾–´³%¸qZOÂ‡`]«­ØÖ}ëÎ~>ıîòûÍAw°(ÉÎŒ«+¹»,HÿÜe2½ékó¶He#`ŞSi+Zù:4‡ó½âİ-@Â—¥ìy°Á¨Ìµ‡ÓË*˜îİ	ÅµI»£³v!L+;:oÄú9×Ï4s¾8†|	>†D3^OhF1Ñ
+W:gú[TËÓ8oÑ×»‘ïØÕyv×§†ê­åÖÙQnU)1]yœ0
+)©a0¢úæ«’‘päM–•‰&K
+³‹!^\¹{<-)®ì‹IçµÍ¼zåóª©1e¥W¬ß#”>¿œ	ÍbÎy=WMë¼ÅRv#ß±E3ñŒ^
+e¿.Øe#Ë4GŞJğÖnç’FlŞÖø0IÃÉõR¶H=‹¾ËUª—¯F3@w0ío_&}Æ¼ûAJÌJ°¹¥€#9<›ıåüÙì/GgMë1™á©¼©gh/‹ÅL±p¸WÎÕò…XHWÄùéÄ%œw&à²Z!0 ¼gë"¨’<aºŠ3É"ZÍ9CÉ|¹b¾$Ş¯áíúfxSP³-àŒÖ?6pL8NŠ‡£«ÅrŞ ÃÙr>mšå]¾8¼8¥”¨Ë—h1Báˆ#ô'B_?éŸeÖóÒºÒ“)âF±?Ì1ª#Œ#áÌ„¾VhïÁ¤Y,@¾$õëe­:š.ÚÅÓã/Ëy{İ~^6)8_9ÿŠcn£»M–Ó[t<û«7èìn6m6.PÃaú*Ü"N]Çy0›LšùU;÷GÊ©¾>;R8ì”…µ·Ó®ç”Ÿn3õµpRê[ƒ†—Sä}lÇı0Y+}:šÆ:}r0èT·Ú®òİù`ˆö7&b^Ç¨_Ï/^_|8ùùøtÿİÑàìíi]$\ZKfàGãöz¥éÖÄÉ!¥œŸ¢‹·§gèàôdx>ø}ğñİÑQÿBÑ»{¥sÖú’
+Kë{2› «Ùt»­‹u\@à\Ã‡Oã§{İ.W´qpO„G–¼W®¸äAîjvßöËU0+hĞ“½z%ÃvóCCn›ùªŞZÌßªúŞV‹P%\”œU„ÀHÜ(ç~••5¼-m5-8ÌA}weÌïŸƒqÛLUô…ß\x•¾"ô·–óWú]MÅ‰Ø\+.İz&¹¤P+BjÈDµ•&ÿnöÄè.õpÏákü!ui¢áåÆœ ”Wş@{DgoöoŞésLŒ‰M<TÁMZ ·{æzótÿßİæh9E7ÑyıÃ¶ÔUê›7BßËôáÏ,ñùÓÕè¾],Ç£E{“æ¢Ö®N~€2xc³åÎ£1z;„Å]¾|8¿|¹/©ù±8b „üHÈ6ª‰Gÿ4ßÒÍjh	Ábmóç£ 6—lí)‡ã²MÑ5ˆÎ›Iû ŸÍ]İæ·ÍÃF>Fj,“Lÿ&eğõ¾ç´…á¯+äXÜİç.´€­,èÀ÷£èq›,IVêmP¹R›u™e0+ÔÚ½´¶’Œ/àJ9<øÎŠ((Û²(œ%î{{èk3ÿNÑˆ`h^Có_LTA×ŠmNYëÎkı“ûºL®q†]Díáx6j›	Lg3¾´scôÀ–r×“Ùò}Ñi,\gÓèuø§Œ®ù¿·cË?ú]ˆàÎ·‡ˆzEêW¬oŞ:)Ø|Ù‘ ß¤ßÿ˜k4‚
+endstream
+endobj
+12 0 obj
+<<
+/Encoding /WinAnsiEncoding
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+>>
+endobj
+13 0 obj
+<<
+/Encoding /WinAnsiEncoding
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+>>
+endobj
+14 0 obj
+<<
+/Length 1047
+/Filter /FlateDecode
+>>
+stream
+xœWËrÛ6İã+°K3“  A dwö4ï8‰µ]tºàH²ÍŒH9Õæsüiİú/z xÙ‘éF÷¼®ğÒwr¾"œš2£«y¹"—ä;áŒK£èß$£ïàÃoDpzAşø“Ó‘š¥iC”ñ£IÍxc9úÏoÈï¤uÄyFMn˜¸
+€£‰+‘œ•¹Åÿ»ëÿAxåŒ„‰ß4F7X öo*˜ò*]²LÁT3¥`gÌ$S+›xššjEÁDJ5Î-6–7ÑÁLÑÔoh
+RÁœªd¶B±ÂêBÌÇéè‚©ÒM>Ï=ŠÚ Î„µmÉüd¬¶³B®0ÚlPFRˆ+*#ç£6C9,ÜÀG	\riEĞ—<cY1bÆ0@Fÿp4àëƒn 4S?3=D—Èã£¬ˆyŠœ©”Bi&Ò&(Åd‚‘\Í9<fŒ1PFjêÂ3¢ 	¤A¦æ¢˜21ƒHçò†é„"¹İDqA
+É´Ll¨bÆ1`BO]#
+’@dj.Š)8HØ•Hçò)´ayÚ­™I0¹Ğs	»Ûc£=uáQÒ SsQL™˜ÀA‚¤ŠsyŠ‚•	…‚Aò(è®N*8‡0…‡„0z('B#4ÈÒ\SF(ÅèkâP@³2!°GjÒh¬I
+® ƒƒŒ!<_t`¦<ŠÍÔÏ\F(Bp€q"K ¯¨¯àfØêŠ÷\Te–5+™¦«†ütÖõõz·=Ğ®êûj}s Õ‘®÷Ím¿¥ë]½mû§«oö6Ğé”Ì®Î
+ÇµúílZ‹¤r— àv´€_îÛ}S·U_ï[ºÙÒİ“ÊÛ9I#yé®Ö¾<Vm_÷÷t3S:ÜUµîİır:s§s´ı¹«Ğc[÷UİÆæw§Ùc­\°j»SÿÕUõaß†é¸—„ñ_Ë¾¯vèyP’±Û6õáp¨ĞLJz±¾©ºëÓ(•	6é¦·÷f•¢ZfîårÜ7ñnZ‹—™©À#D{[‚>?	*w#"Nä'Åòz—–|D9œëqãš£¡«Ù¼:£å¼6/í“eìıñİé¡†ı.²gôvìhİ^í»ÆïĞŸøåbËYÁôTÏÿ}B¹*\ùywìg7QIwGşŒó®à×G¦—»²?Vü:şâvÌaØúİUĞÎëv»ÈhÔ]h”k`±Q(7~|Ü.î^ÔxĞTVÂcEQ7Ò¸ŸÓ;ûw&İ¥`µöîìıSİÖöTØlïèû/_Ï.¾şúñõÅ§ó·^~~ói ´?š/É¿0h
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000009 00000 n 
+0000000074 00000 n 
+0000000483 00000 n 
+0000000672 00000 n 
+0000000861 00000 n 
+0000010295 00000 n 
+0000010467 00000 n 
+0000013855 00000 n 
+0000014027 00000 n 
+0000014052 00000 n 
+0000014200 00000 n 
+0000016116 00000 n 
+0000016219 00000 n 
+0000016317 00000 n 
+trailer
+<<
+/Size 15
+/Root 10 0 R
+/Info 2 0 R
+>>
+startxref
+17438
+%%EOF
