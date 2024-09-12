@@ -76,9 +76,9 @@ facture déjà payée), ...) -->
                     <ram:ID schemeID="0002">98765432100034</ram:ID>
                 </ram:SpecifiedLegalOrganization>
                 <!-- BT-XX : numéro de TVA intracommunautaire -->
-                <ram:SpecifiedTaxRegistration>
+                <!-- <ram:SpecifiedTaxRegistration>
                     <ram:ID schemeID="VA">FR23123456789</ram:ID>
-                </ram:SpecifiedTaxRegistration>
+                </ram:SpecifiedTaxRegistration> -->
             </ram:BuyerTradeParty>
 
             <!-- BT-13 : numéro de commande fourni par l’acheteur -->
