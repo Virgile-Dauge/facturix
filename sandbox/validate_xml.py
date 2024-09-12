@@ -42,14 +42,18 @@ def validate_xml_with_schematron(xml_file, schematron_file):
         print("Le fichier XML n'est pas valide selon les règles du Schematron.")
         print("Erreurs :", schematron.error_log)
 
+from pathlib import Path
+
 # Exemple d'utilisation
-xml_file = 'sandbox/minimal.xml'
+xml_directory = Path('sandbox/populated_xmls')
+schematron_file = Path('validators/FACTUR-X_MINIMUM_custom.sch')
+xsd_file = Path('validators/FACTUR-X_MINIMUM.xsd')  # Remplacer par le chemin réel du XSD
 
-schematron_file = 'validators/FACTUR-X_MINIMUM_custom.sch'
-
-xsd_file = 'validators/FACTUR-X_MINIMUM.xsd'  # Replace with the actual XSD path
-
-# First, validate against the XSD schema
-if validate_xml_with_xsd(xml_file, xsd_file):
-    # If the XSD validation passes, proceed with Schematron validation
-    validate_xml_with_schematron(xml_file, schematron_file)
+# Valider tous les fichiers XML dans le répertoire
+for xml_file in xml_directory.glob('*.xml'):
+    print(f"Validation du fichier : {xml_file}")
+    
+    # Valider d'abord contre le schéma XSD
+    if validate_xml_with_xsd(xml_file, xsd_file):
+        # Si la validation XSD passe, procéder à la validation Schematron
+        validate_xml_with_schematron(xml_file, schematron_file)
