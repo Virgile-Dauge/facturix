@@ -15,7 +15,7 @@ BT = dénomination dd'une donnée métier dans la norme sémantique européenne
 |-----------|-------------|
 | BT-23 | Process Chorus A1 (dépôt facture), A2 (dépôt
 facture déjà payée) |
-| BT-24 | Identification de spécification : référence au format et profil utilisé |
+| BT-24 | Identification de spécification : référence au format et profil utilisé (pas besoin pour l'instant)|
 | BT-1 | numéro de facture |
 | BT-3 | type de facture ex 380 : Facture commerciale|
 | BT-2 | date d’émission de la facture |
@@ -26,7 +26,7 @@ facture déjà payée) |
 | BT-47 | identification légale de l’acheteur |
 | BT-44 | nom de l’acheteur (raison sociale) |
 | BT-13 | numéro de commande fourni par l’acheteur |
-| BT-5 | devise de la facture |
+| BT-5 | devise de la facture (toujours EUR)|
 | BT-109 | montant HT |
 | BT-110 | montant de la TVA où currencyID = BT-5 |
 | BT-112 | montant TTC |
