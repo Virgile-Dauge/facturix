@@ -78,5 +78,31 @@ Mon intuition est que la structure est la même pour le xml des deux flux E1 CII
 Idée : prendre le xml le plus simple tiré d'un flux factur-x et y ajouter les balises nécessaires pour ajouter toutes nos infos en duplicant la structure des CII complexes d'exemple
 
 
+# Process 
+Idée simple : on dispose d'un xml modèle, que l'on va venir peupler avec nos données
+## Peupler le xml
+Je vois deux facons
+- mettre des placeholder et les replace dans un str, facile
+- mettre des id dans les balises du xml modèle, puis remplacer les valeurs des balises correspondantes, plus carré, mais plus lourd
+
+| Critère                 | **Placeholders (Approche 1)**                                   | **XPath (Approche 2)**                                        |
+|-------------------------|-----------------------------------------------------------------|---------------------------------------------------------------|
+| **Facilité de mise en œuvre**  | **Plus facile** : Simple recherche et remplacement des placeholders. | **Plus difficile** : Nécessite une compréhension d'XML et XPath. |
+| **Maintenabilité**       | **Faible** : Nécessite une gestion minutieuse des placeholders à mesure que l'XML grandit. | **Élevée** : Conscient de la structure et plus facile à adapter avec le temps. |
+| **Précision**            | **Faible** : Le remplacement de chaînes peut entraîner des erreurs. | **Élevée** : XPath garantit que les bons éléments sont mis à jour. |
+| **Performance**          | **Rapide pour les petits fichiers XML** : Basé sur des chaînes, plus rapide pour les tâches simples. | **Optimal pour les grands fichiers XML** : Peut gérer des fichiers complexes et volumineux de manière structurée. |
+| **Robustesse**           | **Faible** : Ne gère pas bien les changements de structure.      | **Élevée** : Gère mieux les changements de structure en ciblant précisément les éléments. |
+| **Flexibilité**          | **Faible** : Limité à des remplacements simples.                | **Élevée** : Peut manipuler des XML complexes.               |
+| **Professionnalisme**    | **Basique** : Adapté aux cas d'utilisation plus simples.         | **Plus professionnel** : Meilleur pour les projets complexes et à long terme. |
+
+
+Je dirais dans un premier temps go easy !
+
+Principe : On met des balises `{{BT-XX}}` dans notre `MINIMUM_template.xml`, on le parse avec _xmltree_ on le transforme en str, puis on fait un simple replace de la balise par la bonne valeur issue de la dataframe d'entrée
+
+On le 
+## Validation
+
+On liste les xml d'un dossier, puis on les valide avec le XSD, si ça fonctionne on fait pareil avec le SCH
 
 
