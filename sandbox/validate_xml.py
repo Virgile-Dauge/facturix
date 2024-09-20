@@ -1,7 +1,8 @@
+from pathlib import Path
 from lxml import etree
 from lxml import isoschematron
 
-def validate_xml_with_xsd(xml_file, xsd_file):
+def validate_xml_with_xsd(xml_file: Path, xsd_file: Path):
     # Load the XML and XSD
     with open(xsd_file, 'r') as xsd_f:
         xsd_doc = etree.parse(xsd_f)
@@ -21,7 +22,7 @@ def validate_xml_with_xsd(xml_file, xsd_file):
     
     return is_valid_xsd
 
-def validate_xml_with_schematron(xml_file, schematron_file):
+def validate_xml_with_schematron(xml_file: Path, schematron_file: Path):
     # Charger le fichier XML
     with open(xml_file, 'r') as xml_f:
         xml_doc = etree.parse(xml_f)
@@ -42,18 +43,22 @@ def validate_xml_with_schematron(xml_file, schematron_file):
         print("Le fichier XML n'est pas valide selon les règles du Schematron.")
         print("Erreurs :", schematron.error_log)
 
-from pathlib import Path
 
-# Exemple d'utilisation
-xml_directory = Path('sandbox/populated_xmls')
-schematron_file = Path('validators/FACTUR-X_MINIMUM_custom.sch')
-xsd_file = Path('validators/FACTUR-X_MINIMUM.xsd')  # Remplacer par le chemin réel du XSD
 
-# Valider tous les fichiers XML dans le répertoire
-for xml_file in xml_directory.glob('*.xml'):
-    print(f"Validation du fichier : {xml_file}")
-    
-    # Valider d'abord contre le schéma XSD
-    if validate_xml_with_xsd(xml_file, xsd_file):
-        # Si la validation XSD passe, procéder à la validation Schematron
-        validate_xml_with_schematron(xml_file, schematron_file)
+def main():
+    # Exemple d'utilisation
+    xml_directory = Path('sandbox/populated_xmls')
+    schematron_file = Path('validators/FACTUR-X_MINIMUM_custom.sch')
+    xsd_file = Path('validators/FACTUR-X_MINIMUM.xsd')  # Remplacer par le chemin réel du XSD
+
+    # Valider tous les fichiers XML dans le répertoire
+    for xml_file in xml_directory.glob('*.xml'):
+        print(f"Validation du fichier : {xml_file}")
+        
+        # Valider d'abord contre le schéma XSD
+        if validate_xml_with_xsd(xml_file, xsd_file):
+            # Si la validation XSD passe, procéder à la validation Schematron
+            validate_xml_with_schematron(xml_file, schematron_file)
+
+if __name__ == "__main__":
+    main()
