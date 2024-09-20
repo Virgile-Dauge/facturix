@@ -1,6 +1,8 @@
 import pandas as pd
+from pandas import DataFrame
 from lxml import etree
 from pathlib import Path
+
 # Fonction pour remplacer les placeholders dans le modèle XML
 def populate_xml(xml_file, output_file, placeholders):
     # Parse le fichier XML (modèle)
@@ -27,18 +29,42 @@ def populate_xmls_from_csv(csv_file: Path, xml_template: Path, output_dir: Path)
     # Parcourir chaque ligne du dataframe
     for index, row in df.iterrows():
         # Créer un dictionnaire de placeholders à partir de la ligne
-        placeholders = {"{{"+str(col)+"}}": str(row[col]) for col in df.columns}
+        placeholders = {"{{"+str(col)+"}}": str(row[col]) for col in df.columns if col.startswith('BT')}
         
         # Définir le nom de fichier de sortie
-        output_file = f"{output_dir}/populated_{index+1}.xml"
+        output_file = output_dir / (Path(row['pdf']).stem + '.xml')
         
         # Appeler la fonction pour générer le XML avec les valeurs de cette ligne
         populate_xml(xml_template, output_file, placeholders)
 
-# Exemple d'utilisation
-csv_file = Path('sandbox/random_data.csv')  # Chemin vers ton fichier CSV
-xml_template = Path('sandbox/minimum_template.xml')  # Chemin vers le modèle XML
-output_dir = Path('sandbox/populated_xmls')  # Dossier où enregistrer les fichiers XML générés
 
-# Générer les fichiers XML à partir du CSV
-populate_xmls_from_csv(csv_file, xml_template, output_dir)
+def gen_xmls(df: DataFrame, xml_template: Path, output_dir: Path) -> list[tuple[Path, Path]]:
+
+    files: list[tuple[Path, Path]] = []
+    output_dir.mkdir(exist_ok=True)
+    # Parcourir chaque ligne du dataframe
+    for index, row in df.iterrows():
+        # Créer un dictionnaire de placeholders à partir de la ligne
+        placeholders = {"{{"+str(col)+"}}": str(row[col]) for col in df.columns if col.startswith('BT')}
+        
+        # Définir le nom de fichier de sortie
+        input_file = Path(row['pdf'])
+        output_file = output_dir / (input_file.stem + '.xml')
+        
+        # Appeler la fonction pour générer le XML avec les valeurs de cette ligne
+        populate_xml(xml_template, output_file, placeholders)
+        files += [(input_file, output_file)]
+
+    return files
+
+def main():
+    # Exemple d'utilisation
+    csv_file = Path('sandbox/random_data.csv')  # Chemin vers ton fichier CSV
+    xml_template = Path('sandbox/minimum_template.xml')  # Chemin vers le modèle XML
+    output_dir = Path('sandbox/populated_xmls')  # Dossier où enregistrer les fichiers XML générés
+
+    # Générer les fichiers XML à partir du CSV
+    populate_xmls_from_csv(csv_file, xml_template, output_dir)
+
+if __name__ == "__main__":
+    main()
