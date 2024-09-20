@@ -16,7 +16,7 @@ facture déjà payée), ...) -->
         </ram:BusinessProcessSpecifiedDocumentContextParameter>
         <!-- BT-24 : Identification de spécification : référence au format et profil utilisé : donnée Obligatoire -->
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID> urn:factur-x.eu:1p0:minimum </ram:ID>
+            <ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
 
