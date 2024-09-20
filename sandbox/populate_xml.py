@@ -18,8 +18,6 @@ def populate_xml(xml_file, output_file, placeholders):
     # Enregistre le fichier XML modifié dans un nouveau fichier
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(xml_str)
-    
-    print(f"XML modifié enregistré dans {output_file}")
 
 # Fonction pour lire le CSV et générer plusieurs fichiers XML
 def populate_xmls_from_csv(csv_file: Path, xml_template: Path, output_dir: Path):
