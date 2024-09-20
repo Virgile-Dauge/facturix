@@ -80,7 +80,7 @@ def main():
     df_merged = df.merge(link_df, left_on='BT-1', right_on='num_facture', how='left').drop(columns=['num_facture'])
 
     # Afficher les premières lignes du DataFrame fusionné pour vérification
-    print(df_merged.head())
+    # print(df_merged.head())
 
     xml_template = Path('sandbox/minimum_template.xml')  # Chemin vers le modèle XML
     to_embed = gen_xmls(df_merged, xml_template, output_dir)
