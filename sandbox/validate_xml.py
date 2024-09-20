@@ -1,9 +1,12 @@
 from pathlib import Path
 from lxml import etree
 from lxml import isoschematron
+import logging
 
-def validate_xml_with_xsd(xml_file: Path, xsd_file: Path):
-    # Load the XML and XSD
+logger = logging.getLogger(__name__)
+
+def validate_xml_with_xsd(xml_file: Path, xsd_file: Path) -> bool:
+    # Charger le XML et le XSD
     with open(xsd_file, 'r') as xsd_f:
         xsd_doc = etree.parse(xsd_f)
         xsd_schema = etree.XMLSchema(xsd_doc)
@@ -11,18 +14,16 @@ def validate_xml_with_xsd(xml_file: Path, xsd_file: Path):
     with open(xml_file, 'r') as xml_f:
         xml_doc = etree.parse(xml_f)
 
-    # Validate against the XSD
+    # Valider contre le XSD
     is_valid_xsd = xsd_schema.validate(xml_doc)
     
-    if is_valid_xsd:
-        print("Le fichier XML est valide selon le schéma XSD.")
-    else:
-        print("Le fichier XML n'est pas valide selon le schéma XSD.")
-        print(xsd_schema.error_log)
+    if not is_valid_xsd:
+        logger.error(f"Le fichier {xml_file} n'est pas valide selon le schéma XSD.")
+        logger.error(xsd_schema.error_log)
     
     return is_valid_xsd
 
-def validate_xml_with_schematron(xml_file: Path, schematron_file: Path):
+def validate_xml_with_schematron(xml_file: Path, schematron_file: Path) -> bool:
     # Charger le fichier XML
     with open(xml_file, 'r') as xml_f:
         xml_doc = etree.parse(xml_f)
@@ -37,13 +38,11 @@ def validate_xml_with_schematron(xml_file: Path, schematron_file: Path):
     # Valider le fichier XML
     is_valid = schematron.validate(xml_doc)
 
-    if is_valid:
-        print("Le fichier XML est valide selon les règles du Schematron.")
-    else:
-        print("Le fichier XML n'est pas valide selon les règles du Schematron.")
-        print("Erreurs :", schematron.error_log)
-
-
+    if not is_valid:
+        logger.error(f"Le fichier {xml_file} n'est pas valide selon les règles du Schematron.")
+        logger.error(f"Erreurs : {schematron.error_log}")
+    
+    return is_valid 
 
 def main():
     # Exemple d'utilisation
@@ -53,7 +52,7 @@ def main():
 
     # Valider tous les fichiers XML dans le répertoire
     for xml_file in xml_directory.glob('*.xml'):
-        print(f"Validation du fichier : {xml_file}")
+        logger.info(f"Validation du fichier : {xml_file}")
         
         # Valider d'abord contre le schéma XSD
         if validate_xml_with_xsd(xml_file, xsd_file):
