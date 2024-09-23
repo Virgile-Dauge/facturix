@@ -9,6 +9,7 @@ from facturx import generate_from_file
 from extract_from_pdf import extraire_num_facture
 from populate_xml import gen_xmls
 from validate_xml import validate_xml_with_xsd, validate_xml_with_schematron
+from zipper import create_zip_batches
 
 import logging
 
@@ -22,14 +23,23 @@ logger = logging.getLogger(__name__)
 
 def main():
     parser = argparse.ArgumentParser(description="Lister les fichiers PDF dans un dossier de données.")
-    parser.add_argument('-i', '--input_dir', type=str, help='Le dossier contenant les fichiers PDF des factures.')
-    parser.add_argument('-c', '--input_csv', type=str, help='Le fichier contenant les données des factures.')
-    parser.add_argument('-o', '--output_dir', type=str, help='Le dossier où enregistrer les fichiers de sortie.')
+    parser.add_argument('-i', '--input_dir', required=True, type=str, help='Le dossier contenant les fichiers PDF des factures.')
+    parser.add_argument('-c', '--input_csv', required=True, type=str, help='Le fichier contenant les données des factures.')
+    parser.add_argument('-o', '--output_dir', required=True, type=str, help='Le dossier où enregistrer les fichiers de sortie.')
     parser.add_argument('-f', '--force_recalc', action='store_true', help='Forcer le recalcul du CSV de lien facture-fichier.')
+    parser.add_argument('-v', '--verbose', action='count', default=0, help='Augmenter le niveau de verbosité (peut être utilisé jusqu\'à 2 fois).')
+    args = parser.parse_args()
+
+    # Configurer le niveau de log en fonction de l'option -v
+    if args.verbose == 1:
+        logging.getLogger().setLevel(logging.DEBUG)
+    elif args.verbose >= 2:
+        logging.getLogger().setLevel(logging.NOTSET)
+
     args = parser.parse_args()
 
     # Prep Arboresence
-    input_dir = Path(args.input_dir)
+    input_dir = Path(args.input_dir).expanduser()
     
     if not input_dir.exists():
         print(f'{input_dir} does not exists, exiting.')
@@ -82,7 +92,8 @@ def main():
     # Afficher les premières lignes du DataFrame fusionné pour vérification
     # print(df_merged.head())
 
-    xml_template = Path('sandbox/minimum_template.xml')  # Chemin vers le modèle XML
+    # Validation des XMLs générés
+    xml_template = Path('templates/minimum_template.xml')  # Chemin vers le modèle XML
     to_embed = gen_xmls(df_merged, xml_template, output_dir)
     
     schematron_file = Path('validators/FACTUR-X_MINIMUM_custom.sch')
@@ -95,7 +106,7 @@ def main():
     if invalid:
         logger.error(f"Les fichiers XML suivants ne sont pas valides : {invalid}")
     
-    
+    # Embed XMLs in PDFs
     for p, x in to_embed:
         
         with open(x, 'rb') as xml_file:
@@ -106,17 +117,12 @@ def main():
         facturx_pdf = generate_from_file(
             p,  # Le PDF original à transformer en PDF/A-3
             xml_bytes,
-            #facturx_level='MINIMUM',  # Niveau Factur-X (BASIC, EN16931, etc.)
             output_pdf_file=str(output_file),  # Le fichier PDF/A-3 de sortie
         )
-    
-    from zip_pdf_files import zip_pdfs
-    
-    max_size = 100 * 1024 * 1024  # 100MB
-    max_entries = 50
-    
-    zip_pdfs(list(output_dir.glob('*.pdf')), output_dir, max_size, max_entries)
 
+    # Zipping files 
+    zip_dir = output_dir / 'zipped'
+    create_zip_batches(list(output_dir.glob('*.pdf')), zip_dir, max_files=500, max_size_mo=20)
 
 if __name__ == "__main__":
     main()
