@@ -1,6 +1,7 @@
 from pathlib import Path
 from lxml import etree
 from lxml import isoschematron
+from pandas import DataFrame
 import logging
 
 logger = logging.getLogger(__name__)
@@ -43,6 +44,23 @@ def validate_xml_with_schematron(xml_file: Path, schematron_file: Path) -> bool:
         logger.error(f"Erreurs : {schematron.error_log}")
     
     return is_valid 
+
+def validate_xml(xml_files: list[Path], schematron_file: Path, xsd_file: Path) -> list[Path]:
+    """
+    Generate and validate the XML files against XSD and Schematron.
+
+    Parameters:
+    - xml_files: xml files to validate
+    - schematron_file: Path to the Schematron validation file
+    - xsd_file: Path to the XSD validation file
+
+
+    Returns:
+    - invalid: List of invalid XML file paths
+    """  
+    return [x for x in xml_files 
+               if not (validate_xml_with_xsd(x, xsd_file) 
+                       and validate_xml_with_schematron(x, schematron_file))]
 
 def main():
     # Exemple d'utilisation
