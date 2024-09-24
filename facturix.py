@@ -3,12 +3,13 @@ import argparse
 import pandas as pd
 import pandas.testing as pdt
 
+from pandas import DataFrame
 from pathlib import Path
 from facturx import generate_from_file
 
 from extract_from_pdf import extraire_num_facture
 from populate_xml import gen_xmls
-from validate_xml import validate_xml_with_xsd, validate_xml_with_schematron
+from validate_xml import validate_xml
 from zipper import create_zip_batches
 
 import logging
@@ -20,8 +21,63 @@ logging.getLogger('factur-x').setLevel(logging.WARN)
 
 logger = logging.getLogger(__name__)
 
+def make_or_get_linked_data(dir: Path, pdfs: list[Path], 
+                            input_csv: Path, 
+                            force_recalc: bool=False) -> DataFrame:
+    """
+    Crée ou récupère les données liées entre des fichiers PDF et un fichier CSV d'entrée.
+
+    Args:
+        dir (Path): Le répertoire de travail.
+        pdfs (list[Path]): Liste des chemins vers les fichiers PDF.
+        input_csv (Path): Chemin vers le fichier CSV d'entrée.
+        force_recalc (bool): Force le recalcul si True, même si le fichier de liens existe déjà.
+
+    Returns:
+        DataFrame: Une DataFrame fusionnée contenant les informations issues des PDF et du CSV d'entrée.
+    
+    Raises:
+        ValueError: Si le fichier CSV d'entrée n'existe pas.
+    """
+    link_csv = dir / 'lien_pdf_factID.csv'
+    if not input_csv.exists():
+        raise ValueError(f"Le fichier CSV d'entrée {input_csv} n'existe pas.")
+
+    if force_recalc or not link_csv.exists():
+        # On extrait le num de facture pour chaque pdf
+        num_fact = [extraire_num_facture(f) for f in pdfs]
+        
+        # On s'assure qu'on a bien récup tous les nums de facture
+        assert len(pdfs) == len([n for n in num_fact if n is not None])
+        
+        # Créer une DataFrame avec les couples pdfs et num_fact
+        link_df = pd.DataFrame({
+            'pdf': pdfs,
+            'num_facture': num_fact
+        })
+        
+        # Enregistrer la DataFrame dans un fichier CSV
+        link_df.to_csv(link_csv, index=False)
+        print(f"Les couples pdfs et num_fact ont été enregistrés dans {link_csv}")
+
+    # Chargement des fichiers
+    data_df = pd.read_csv(input_csv)
+    link_df = pd.read_csv(link_csv)
+
+    # Convertir les colonnes en chaînes de caractères avant la fusion
+    data_df['BT-1'] = data_df['BT-1'].astype(str)
+    link_df['num_facture'] = link_df['num_facture'].astype(str)
+
+
+    # Fusionner les DataFrames df et link_df sur la colonne 'num_facture'
+    return data_df.merge(link_df, 
+                         left_on='BT-1', 
+                         right_on='num_facture', 
+                         how='left').drop(columns=['num_facture'])
 
 def main():
+
+    # ==== Étape 0 : Récup args et setup arborescence ====
     parser = argparse.ArgumentParser(description="Lister les fichiers PDF dans un dossier de données.")
     parser.add_argument('-i', '--input_dir', required=True, type=str, help='Le dossier contenant les fichiers PDF des factures.')
     parser.add_argument('-c', '--input_csv', required=True, type=str, help='Le fichier contenant les données des factures.')
@@ -54,59 +110,30 @@ def main():
     output_dir = Path(args.output_dir)
     output_dir.mkdir(exist_ok=True, parents=True)        
     
-    # On liste les PDF d'entrée
+
+    # ==== Étape 1 : Lister les fichiers PDF d'entrée ============
     pdfs = [f for f in input_dir.rglob('*.pdf')]
     
-    link_csv = output_dir / 'lien_pdf_factID.csv'
-    
-    if args.force_recalc or not link_csv.exists():
-        # On extrait le num de facture pour chaque pdf
-        num_fact = [extraire_num_facture(f) for f in pdfs]
-        
-        # On s'assure qu'on a bien récup tous les nums de facture
-        assert len(pdfs) == len([n for n in num_fact if n is not None])
-        
-        # Créer une DataFrame avec les couples pdfs et num_fact
-        link_df = pd.DataFrame({
-            'pdf': pdfs,
-            'num_facture': num_fact
-        })
-        
-        # Enregistrer la DataFrame dans un fichier CSV
-        link_df.to_csv(link_csv, index=False)
-        print(f"Les couples pdfs et num_fact ont été enregistrés dans {link_csv}")
+    # ==== Étape 2 : Faire le lien données - pdf =================
+    df = make_or_get_linked_data(output_dir, pdfs, 
+                                 Path(args.input_csv), 
+                                 args.force_recalc)
 
-    # Charger le fichier CSV
-    link_df = pd.read_csv(link_csv)
-    print(f"Le fichier {link_csv} a été chargé.")
-
-    # On charge le fichier de données
-    df = pd.read_csv(args.input_csv)
-    
-    # Convertir les colonnes en chaînes de caractères avant la fusion
-    df['BT-1'] = df['BT-1'].astype(str)
-    link_df['num_facture'] = link_df['num_facture'].astype(str)
-    # Fusionner les DataFrames df et link_df sur la colonne 'num_facture'
-    df_merged = df.merge(link_df, left_on='BT-1', right_on='num_facture', how='left').drop(columns=['num_facture'])
-
-    # Afficher les premières lignes du DataFrame fusionné pour vérification
-    # print(df_merged.head())
-
-    # Validation des XMLs générés
+    # ==== Étape 3 : Generation des XML CII ======================
     xml_template = Path('templates/minimum_template.xml')  # Chemin vers le modèle XML
-    to_embed = gen_xmls(df_merged, xml_template, output_dir)
+    to_embed = gen_xmls(df, xml_template, output_dir)
     
+    # ==== Étape 4 : Validation des XMLs générés =================
     schematron_file = Path('validators/FACTUR-X_MINIMUM_custom.sch')
     xsd_file = Path('validators/FACTUR-X_MINIMUM.xsd')  # Remplacer par le chemin réel du XSD
-
     produced_xml = output_dir.glob('*.xml')
     
-    invalid = [x for x in produced_xml if not (validate_xml_with_xsd(x, xsd_file) and validate_xml_with_schematron(x, schematron_file))]
+    invalid = validate_xml(produced_xml, schematron_file, xsd_file)
 
     if invalid:
         logger.error(f"Les fichiers XML suivants ne sont pas valides : {invalid}")
     
-    # Embed XMLs in PDFs
+    # ==== Étape 5 : Intégration des xml dans les pdfs ===========
     for p, x in to_embed:
         
         with open(x, 'rb') as xml_file:
@@ -120,10 +147,9 @@ def main():
             output_pdf_file=str(output_file),  # Le fichier PDF/A-3 de sortie
         )
 
-    # Zipping files 
+    # ==== Étape 6 : Création des archives zip ====================
     zip_dir = output_dir / 'zipped'
     create_zip_batches(list(output_dir.glob('*.pdf')), zip_dir, max_files=500, max_size_mo=20)
 
 if __name__ == "__main__":
     main()
-
