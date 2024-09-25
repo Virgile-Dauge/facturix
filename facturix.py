@@ -61,19 +61,28 @@ def make_or_get_linked_data(dir: Path, pdfs: list[Path],
         print(f"Les couples pdfs et num_fact ont été enregistrés dans {link_csv}")
 
     # Chargement des fichiers
-    data_df = pd.read_csv(input_csv)
+    data_df = pd.read_csv(input_csv).replace('–', '-', regex=True)
     link_df = pd.read_csv(link_csv)
 
     # Convertir les colonnes en chaînes de caractères avant la fusion
     data_df['BT-1'] = data_df['BT-1'].astype(str)
     link_df['num_facture'] = link_df['num_facture'].astype(str)
 
-
     # Fusionner les DataFrames df et link_df sur la colonne 'num_facture'
-    return data_df.merge(link_df, 
-                         left_on='BT-1', 
-                         right_on='num_facture', 
-                         how='left').drop(columns=['num_facture'])
+    df = data_df.merge(link_df,
+                       left_on='BT-1',
+                       right_on='num_facture', 
+                       how='left').drop(columns=['num_facture'])
+    
+    # Filter rows where PDF is not NaN and log warnings for NaN entries
+    nan_pdfs = df[df['pdf'].isna()]
+    if not nan_pdfs.empty:
+        logging.warning(f"Found {len(nan_pdfs)} rows with NaN PDF values:")
+        for index, row in nan_pdfs.iterrows():
+            logging.warning(f"Facture #{row['BT-1']}")
+
+    df = df.dropna(subset=['pdf'])
+    return df
 
 def main():
 
@@ -112,15 +121,15 @@ def main():
     
 
     # ==== Étape 1 : Lister les fichiers PDF d'entrée ============
-    pdfs = [f for f in input_dir.rglob('*.pdf')]
+    pdfs = [f for f in input_dir.glob('*.pdf')]
     
     # ==== Étape 2 : Faire le lien données - pdf =================
     df = make_or_get_linked_data(output_dir, pdfs, 
                                  Path(args.input_csv), 
                                  args.force_recalc)
-
+    
     # ==== Étape 3 : Generation des XML CII ======================
-    xml_template = Path('templates/minimum_template.xml')  # Chemin vers le modèle XML
+    xml_template = Path('templates/minimum_template_without_bt31_bt13.xml')  # Chemin vers le modèle XML
     to_embed = gen_xmls(df, xml_template, output_dir)
     
     # ==== Étape 4 : Validation des XMLs générés =================
