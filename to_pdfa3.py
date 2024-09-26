@@ -6,27 +6,6 @@ import multiprocessing
 
 from pathlib import Path
 
-def embed_fonts_with_ghostscript_multi(input_pdfs, output_dir, threads=8):
-    """
-    Use Ghostscript to embed all fonts and ensure PDF/A-3 compliance.
-    """
-    gs_command = [
-        "gs", "-dBATCH", "-dNOPAUSE", "-sDEVICE=pdfwrite",
-        "-dPDFSETTINGS=/prepress", "-dEmbedAllFonts=true",
-        "-dSubsetFonts=true", "-dAutoRotatePages=/None",
-        "-dCompatibilityLevel=1.4", "-dPDFA=2", "-dPDFACompatibilityPolicy=1",
-        "-sOutputFile=" + output_dir + "/intermediate_%d.pdf"
-    ]
-    gs_command.extend(input_pdfs)
-
-    try:
-        subprocess.run(gs_command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    except subprocess.CalledProcessError as e:
-        print(f"Ghostscript command failed: {e}")
-        print(f"Ghostscript stdout: {e.stdout.decode()}")
-        print(f"Ghostscript stderr: {e.stderr.decode()}")
-        raise
-
 def embed_fonts_with_ghostscript(input_pdf, output_pdf, threads=8):
     """
     Use Ghostscript to embed all fonts and ensure PDF/A-3 compliance.
@@ -121,7 +100,7 @@ def process_pdfs_with_progress(input_files, output_dir, icc_profile_path):
         for input_file in input_files:
             base_name = os.path.basename(input_file)
             intermediate_pdf = os.path.join(output_dir, f"intermediate_{base_name}")
-            final_output_pdf = os.path.join(output_dir, f"final_{base_name}")
+            final_output_pdf = os.path.join(output_dir, f"{base_name}")
             
             # Embed fonts with Ghostscript
             embed_fonts_with_ghostscript(input_file, intermediate_pdf)
@@ -135,27 +114,6 @@ def process_pdfs_with_progress(input_files, output_dir, icc_profile_path):
             progress.update(task, advance=1)
     
     console.print(f"[bold green]All PDFs processed and saved in {output_dir}[/bold green]")
-
-def process_multiple_pdfs(input_files, output_dir, icc_profile_path):
-    """
-    Process a list of PDF files by embedding fonts and ICC profile.
-    """
-    os.makedirs(output_dir, exist_ok=True)
-    
-    # Embed fonts with Ghostscript for all files at once
-    intermediate_pdfs = embed_fonts_with_ghostscript_multi(input_files, output_dir)
-    
-    for input_file, intermediate_pdf in zip(input_files, intermediate_pdfs):
-        base_name = os.path.basename(input_file)
-        final_output_pdf = os.path.join(output_dir, base_name)
-        
-        # Embed ICC profile and fix trailer
-        embed_icc_profile_and_fix_trailer(intermediate_pdf, icc_profile_path, final_output_pdf)
-        
-        # Remove intermediate file
-        os.remove(intermediate_pdf)
-        
-    print(f"All PDFs processed and saved in {output_dir}")
 
 def main():
     import argparse
@@ -173,7 +131,7 @@ def main():
     output_dir = Path(args.output_dir).expanduser()
     output_dir.mkdir(parents=True, exist_ok=True)
     process_pdfs_with_progress(files, output_dir, args.icc_profile)
-    #process_multiple_pdfs(files, output_dir, args.icc_profile)
+    # process_multiple_pdfs(files, output_dir, args.icc_profile)
 
 if __name__ == "__main__":
     main()
