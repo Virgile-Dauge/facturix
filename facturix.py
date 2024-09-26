@@ -5,8 +5,10 @@ import pandas.testing as pdt
 
 from pandas import DataFrame
 from pathlib import Path
+
 from facturx import generate_from_file
 
+from to_pdfa3 import process_pdfs_with_progress
 from extract_from_pdf import extraire_num_facture
 from populate_xml import gen_xmls
 from validate_xml import validate_xml
@@ -64,8 +66,11 @@ def make_or_get_linked_data(dir: Path, pdfs: list[Path],
     data_df = pd.read_csv(input_csv).replace('–', '-', regex=True)
     link_df = pd.read_csv(link_csv)
 
+    # On ne garde que les colonnes BT
+    data_df = data_df.loc[:, data_df.columns.str.startswith('BT-')].dropna(subset=['BT-1'])
+
     # Convertir les colonnes en chaînes de caractères avant la fusion
-    data_df['BT-1'] = data_df['BT-1'].astype(str)
+    data_df['BT-1'] = data_df['BT-1'].astype(int).astype(str)
     link_df['num_facture'] = link_df['num_facture'].astype(str)
 
     # Fusionner les DataFrames df et link_df sur la colonne 'num_facture'
@@ -91,7 +96,9 @@ def main():
     parser.add_argument('-i', '--input_dir', required=True, type=str, help='Le dossier contenant les fichiers PDF des factures.')
     parser.add_argument('-c', '--input_csv', required=True, type=str, help='Le fichier contenant les données des factures.')
     parser.add_argument('-o', '--output_dir', required=True, type=str, help='Le dossier où enregistrer les fichiers de sortie.')
-    parser.add_argument('-f', '--force_recalc', action='store_true', help='Forcer le recalcul du CSV de lien facture-fichier.')
+    parser.add_argument('-b', '--batch_name', required=True, type=str, help='Le nom du lot de traitement.')
+    parser.add_argument('-fr', '--force_recalc', action='store_true', help='Forcer le recalcul du CSV de lien facture-fichier.')
+    parser.add_argument('-fp', '--force_pdfa3', action='store_true', help='Forcer le reprocess des pdf vers pdf/A-3.')
     parser.add_argument('-v', '--verbose', action='count', default=0, help='Augmenter le niveau de verbosité (peut être utilisé jusqu\'à 2 fois).')
     args = parser.parse_args()
 
@@ -121,12 +128,26 @@ def main():
     
 
     # ==== Étape 1 : Lister les fichiers PDF d'entrée ============
-    pdfs = [f for f in input_dir.glob('*.pdf')]
+    
+    pdfa3_dir = output_dir / 'pdfa3'
+
+    if not pdfa3_dir.exists() or args.force_pdfa3:
+        pdfa3_dir.mkdir(parents=True, exist_ok=True)
+
+        pdfs = [f for f in input_dir.glob('*.pdf')]
+        # Transformer les fichiers PDF en PDF/A-3
+        original_pdfs = [f for f in input_dir.glob('*.pdf')]
+        process_pdfs_with_progress(original_pdfs, pdfa3_dir, 'sRGB_ICC_v4_Appearance.icc')
+    
+    # Lister les nouveaux fichiers PDF/A-3
+    pdfs = [f for f in pdfa3_dir.glob('*.pdf')]
+    print(f'Found {len(pdfs)} PDF files in {pdfa3_dir}')
     
     # ==== Étape 2 : Faire le lien données - pdf =================
-    df = make_or_get_linked_data(output_dir, pdfs, 
+    df = make_or_get_linked_data(pdfa3_dir, pdfs, 
                                  Path(args.input_csv), 
                                  args.force_recalc)
+    print(df)
     
     # ==== Étape 3 : Generation des XML CII ======================
     xml_template = Path('templates/minimum_template_without_bt31_bt13.xml')  # Chemin vers le modèle XML
@@ -158,7 +179,9 @@ def main():
 
     # ==== Étape 6 : Création des archives zip ====================
     zip_dir = output_dir / 'zipped'
-    create_zip_batches(list(output_dir.glob('*.pdf')), zip_dir, max_files=500, max_size_mo=20)
+    create_zip_batches(list(output_dir.glob('*.pdf')), zip_dir, 
+                       max_files=500, max_size_mo=500,
+                       name=args.batch_name)
 
 if __name__ == "__main__":
     main()
