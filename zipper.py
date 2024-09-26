@@ -25,10 +25,12 @@ def create_zip(zip_path: Path, file_list: list[Path]):
         for file in file_list:
             zipf.write(file, arcname=file.name)
 
-def gen_zip_path(dest_dir: Path, batch_counter: int) -> Path:
-    return dest_dir / f"{date.today().strftime('%Y%m%d')}_batch_{batch_counter}.zip"
+def gen_zip_path(dest_dir: Path, batch_counter: int, name:str) -> Path:
+    return dest_dir / f"{date.today().strftime('%Y%m%d')}_{name}_{batch_counter}.zip"
 
-def create_zip_batches(files: list[Path], dest_dir: Path, max_files: int=500, max_size_mo: int=20):
+def create_zip_batches(files: list[Path], dest_dir: Path, 
+                       max_files: int=500, max_size_mo: int=20, 
+                       name:str='arch'):
     max_size_o = max_size_mo * 1024 * 1024  # Convertir Mo en octets
 
     if not files:
@@ -49,7 +51,7 @@ def create_zip_batches(files: list[Path], dest_dir: Path, max_files: int=500, ma
     while files:
         # Crée un nouveau fichier zip s'il n'y en a pas de courant
         if current_zip is None:
-            current_zip_path = gen_zip_path(dest_dir, batch_counter)
+            current_zip_path = gen_zip_path(dest_dir, batch_counter, name)
             current_zip = zipfile.ZipFile(current_zip_path, 'w')
         
         # Vérifie si le nombre maximal de fichiers dans le batch est atteint
