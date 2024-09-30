@@ -5,6 +5,7 @@ import pandas.testing as pdt
 
 from pandas import DataFrame
 from pathlib import Path
+from pkg_resources import resource_filename
 
 from facturx import generate_from_file
 
@@ -13,6 +14,7 @@ from extract_from_pdf import extraire_num_facture
 from populate_xml import gen_xmls
 from validate_xml import validate_xml
 from zipper import create_zip_batches
+SUPPORTED_LEVELS = {'MINIMUM'}
 
 import logging
 
@@ -88,6 +90,66 @@ def make_or_get_linked_data(dir: Path, pdfs: list[Path],
 
     df = df.dropna(subset=['pdf'])
     return df
+
+def process_invoices(df: DataFrame, input_dir: Path, work_dir: Path, output_dir: Path, level: str='MINIMUM', conform_pdf: bool=True):
+    """
+    Process invoices by generating XMLs, validating them, and embedding them into PDFs.
+
+    Args:
+    df (pandas.DataFrame): DataFrame containing invoice data.
+    input_dir (str or Path): Directory containing input PDF files.
+    output_dir (str or Path): Directory to save output files.
+    level (str): Factur-X level (e.g., 'MINIMUM', 'BASIC', 'EN16931', 'EXTENDED'). Only 'MINIMUM' is currently supported.
+
+    Returns:
+    list: List of invalid XML files, if any.
+
+    Raises:
+    ValueError: If the specified level is not supported.
+    FileNotFoundError: If required files are not found.
+    """
+    # Check if the level is supported
+    if level not in SUPPORTED_LEVELS:
+        raise ValueError(f"Unsupported Factur-X level: {level}. Supported levels are: {', '.join(SUPPORTED_LEVELS)}")
+    
+    # Convert to Path objects if they're not already
+    input_dir = Path(input_dir)
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    icc_profile = resource_filename('facturix', 'color_profiles/sRGB_ICC_v4_Appearance.icc')
+    if conform_pdf:
+        process_pdfs_with_progress(df, input_dir, work_dir, icc_profile)
+    xml_template = resource_filename('facturix', f'templates/{level}_template.xml')
+
+    # Step 1: Generate XMLs
+    to_embed = gen_xmls(df, output_dir, xml_template, level)
+    
+    # Step 2: Validate generated XMLs
+    schematron_file = resource_filename('facturix', f'validators/FACTUR-X_{level}.sch')
+    xsd_file = resource_filename('facturix', f'validators/FACTUR-X_{level}.xsd')
+    produced_xml = output_dir.glob('*.xml')
+    
+    invalid = validate_xml(produced_xml, schematron_file, xsd_file, level)
+
+    if invalid:
+        logger.error(f"The following XML files are not valid: {invalid}")
+    
+    # Step 3: Integrate XMLs into PDFs
+    for pdf_file, xml_file in to_embed:
+        with open(xml_file, 'rb') as xml_file:
+            xml_bytes = xml_file.read()
+
+        output_file = output_dir / pdf_file.name
+        # Generate a Factur-X invoice with the XML file embedded in the PDF
+        generate_from_file(
+            pdf_file,  # The original PDF to transform into PDF/A-3
+            xml_bytes,
+            output_pdf_file=str(output_file),  # The output PDF/A-3 file
+            flavor=f'factur-x_{level.lower()}'
+        )
+    
+    return invalid
 
 def main():
 
