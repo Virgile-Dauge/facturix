@@ -84,16 +84,24 @@ def process_pdfs(input_files, output_dir, icc_profile_path):
         
     print(f"All PDFs processed and saved in {output_dir}")
 
-def process_pdfs_with_progress(input_files, output_dir, icc_profile_path):
+def process_pdfs_with_progress(input_files, output_dir, icc_profile_path=None)->list[Path]:
     """
     Process a list of PDF files by embedding fonts and ICC profile with a progress bar.
     """
     from rich.progress import Progress
     from rich.console import Console
-
+    # If no ICC profile path is provided, use the local one
+    if icc_profile_path is None:
+        script_dir = Path(__file__).parent
+        icc_profile_path = script_dir / "sRGB_ICC_v4_Appearance.icc"
+    
+    # Ensure the ICC profile exists
+    if not os.path.exists(icc_profile_path):
+        raise FileNotFoundError(f"ICC profile not found: {icc_profile_path}")
     os.makedirs(output_dir, exist_ok=True)
     console = Console()
     
+    output_pdfs = []
     with Progress() as progress:
         task = progress.add_task("[green]Processing PDFs...", total=len(input_files))
         
@@ -111,9 +119,11 @@ def process_pdfs_with_progress(input_files, output_dir, icc_profile_path):
             # Remove intermediate file
             os.remove(intermediate_pdf)
             
+            output_pdfs.append(final_output_pdf)
             progress.update(task, advance=1)
     
     console.print(f"[bold green]All PDFs processed and saved in {output_dir}[/bold green]")
+    return output_pdfs
 
 def main():
     import argparse
