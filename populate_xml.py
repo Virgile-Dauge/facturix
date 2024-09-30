@@ -10,7 +10,13 @@ def populate_xml(xml_file, output_file, placeholders):
     
     # Convertit l'arbre XML en chaîne pour faire un remplacement de texte
     xml_str = etree.tostring(tree, pretty_print=True, encoding='unicode')
+
+    # Décommenter BT-10 si nécessaire
+    if '{{BT-10}}' in placeholders:
+        xml_str = xml_str.replace('<!--BT-10', '').replace('BT-10-->', '')
     
+    if '{{BT-13}}' in placeholders:
+        xml_str = xml_str.replace('<!--BT-13', '').replace('BT-13-->', '')
     # Remplace les placeholders par des valeurs réelles
     for placeholder, value in placeholders.items():
         xml_str = xml_str.replace(placeholder, value)
@@ -20,7 +26,7 @@ def populate_xml(xml_file, output_file, placeholders):
         f.write(xml_str)
 
 # Fonction pour lire le CSV et générer plusieurs fichiers XML
-def populate_xmls_from_csv(csv_file: Path, xml_template: Path, output_dir: Path):
+def populate_xmls_from_csv(csv_file: Path, output_dir: Path, xml_template: Path=Path('templates/minimum_template_modular.xml')):
     # Lire le fichier CSV
     df = pd.read_csv(csv_file)
     output_dir.mkdir(exist_ok=True)
@@ -36,8 +42,11 @@ def populate_xmls_from_csv(csv_file: Path, xml_template: Path, output_dir: Path)
         populate_xml(xml_template, output_file, placeholders)
 
 
-def gen_xmls(df: DataFrame, xml_template: Path, output_dir: Path) -> list[tuple[Path, Path]]:
-
+def gen_xmls(df: DataFrame, output_dir: Path, xml_template: Path=None) -> list[tuple[Path, Path]]:
+    if xml_template is None:
+        script_dir = Path(__file__).parent
+        xml_template = script_dir / 'templates/minimum_template_modular.xml'
+    
     files: list[tuple[Path, Path]] = []
     output_dir.mkdir(exist_ok=True)
     # Parcourir chaque ligne du dataframe
@@ -62,7 +71,7 @@ def main():
     output_dir = Path('sandbox/populated_xmls')  # Dossier où enregistrer les fichiers XML générés
 
     # Générer les fichiers XML à partir du CSV
-    populate_xmls_from_csv(csv_file, xml_template, output_dir)
+    populate_xmls_from_csv(csv_file, output_dir, xml_template)
 
 if __name__ == "__main__":
     main()
