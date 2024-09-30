@@ -151,7 +151,7 @@ def main():
     
     # ==== Étape 3 : Generation des XML CII ======================
     xml_template = Path('templates/minimum_template_without_bt31_bt13.xml')  # Chemin vers le modèle XML
-    to_embed = gen_xmls(df, xml_template, output_dir)
+    to_embed = gen_xmls(df, output_dir, xml_template)
     
     # ==== Étape 4 : Validation des XMLs générés =================
     schematron_file = Path('validators/FACTUR-X_MINIMUM_custom.sch')
