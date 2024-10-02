@@ -45,7 +45,7 @@ def validate_xml_with_schematron(xml_file: Path, schematron_file: Path) -> bool:
     
     return is_valid 
 
-def validate_xml(xml_files: list[Path], schematron_file: Path, xsd_file: Path) -> list[Path]:
+def validate_xml(xml_files: list[Path], schematron_file: Path=None, xsd_file: Path=None) -> list[Path]:
     """
     Generate and validate the XML files against XSD and Schematron.
 
@@ -57,7 +57,11 @@ def validate_xml(xml_files: list[Path], schematron_file: Path, xsd_file: Path) -
 
     Returns:
     - invalid: List of invalid XML file paths
-    """  
+    """
+    if schematron_file is None:
+        schematron_file = Path(__file__).parent / 'validators/FACTUR-X_MINIMUM_custom.sch'
+    if xsd_file is None:
+        xsd_file = Path(__file__).parent / 'validators/FACTUR-X_MINIMUM.xsd'
     return [x for x in xml_files 
                if not (validate_xml_with_xsd(x, xsd_file) 
                        and validate_xml_with_schematron(x, schematron_file))]
