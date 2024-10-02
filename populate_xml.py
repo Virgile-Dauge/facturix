@@ -54,6 +54,8 @@ def gen_xmls(df: DataFrame, output_dir: Path, xml_template: Path=None) -> list[t
         # Créer un dictionnaire de placeholders à partir de la ligne
         placeholders = {"{{"+str(col)+"}}": str(row[col]) for col in df.columns if col.startswith('BT')}
         
+        if pd.isna(row['pdf']):
+            continue
         # Définir le nom de fichier de sortie
         input_file = Path(row['pdf'])
         output_file = output_dir / (input_file.stem + '.xml')
