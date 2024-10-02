@@ -62,9 +62,11 @@ facture déjà payée), ...) -->
                 </ram:PostalTradeAddress>
 
                 <!-- BT-31 : numéro de TVA intracommunautaire -->
+                <!--BT-31
                 <ram:SpecifiedTaxRegistration>
                     <ram:ID schemeID="VA">{{BT-31}}</ram:ID>
                 </ram:SpecifiedTaxRegistration>
+                BT-31-->
             </ram:SellerTradeParty>
 
             <!-- BG-7 : groupe d’information de l’acheteur -->

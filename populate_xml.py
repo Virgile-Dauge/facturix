@@ -17,6 +17,10 @@ def populate_xml(xml_file, output_file, placeholders):
     
     if '{{BT-13}}' in placeholders:
         xml_str = xml_str.replace('<!--BT-13', '').replace('BT-13-->', '')
+
+    if '{{BT-31}}' in placeholders:
+        xml_str = xml_str.replace('<!--BT-31', '').replace('BT-31-->', '')
+    
     # Remplace les placeholders par des valeurs réelles
     for placeholder, value in placeholders.items():
         xml_str = xml_str.replace(placeholder, value)
