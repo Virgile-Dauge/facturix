@@ -49,13 +49,12 @@ def gen_xmls(df: DataFrame, output_dir: Path, xml_template: Path=None) -> list[t
     
     files: list[tuple[Path, Path]] = []
     output_dir.mkdir(exist_ok=True)
+    df_completed = df.copy().dropna(subset=['pdf', 'BT-1'])
     # Parcourir chaque ligne du dataframe
-    for index, row in df.iterrows():
+    for index, row in df_completed.iterrows():
         # Créer un dictionnaire de placeholders à partir de la ligne
-        placeholders = {"{{"+str(col)+"}}": str(row[col]) for col in df.columns if col.startswith('BT')}
-        
-        if pd.isna(row['pdf']):
-            continue
+        placeholders = {"{{"+str(col)+"}}": str(row[col]) for col in df.columns if col.startswith('BT') and not pd.isna(row[col])}
+
         # Définir le nom de fichier de sortie
         input_file = Path(row['pdf'])
         output_file = output_dir / (input_file.stem + '.xml')
