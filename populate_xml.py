@@ -11,6 +11,8 @@ def populate_xml(xml_file, output_file, placeholders, optionnal = ['BT-10', 'BT-
     # Convertit l'arbre XML en chaîne pour faire un remplacement de texte
     xml_str = etree.tostring(tree, pretty_print=True, encoding='unicode')
     
+    # filtre valeurs vides :
+    placeholders = {k: str(v) for k, v in placeholders.items() if v != ''}
     for k in optionnal:
         if '{{'+k+'}}' in placeholders:
             xml_str = xml_str.replace(f'<!--{k}', '').replace(f'{k}-->', '')
