@@ -91,7 +91,7 @@ def make_or_get_linked_data(dir: Path, pdfs: list[Path],
     df = df.dropna(subset=['pdf'])
     return df
 
-def process_invoices(df: DataFrame, input_dir: Path, work_dir: Path, output_dir: Path, level: str='MINIMUM', conform_pdf: bool=True):
+def process_invoices(df: DataFrame, work_dir: Path, output_dir: Path, level: str='MINIMUM', conform_pdf: bool=True):
     """
     Process invoices by generating XMLs, validating them, and embedding them into PDFs.
 
@@ -113,24 +113,27 @@ def process_invoices(df: DataFrame, input_dir: Path, work_dir: Path, output_dir:
         raise ValueError(f"Unsupported Factur-X level: {level}. Supported levels are: {', '.join(SUPPORTED_LEVELS)}")
     
     # Convert to Path objects if they're not already
-    input_dir = Path(input_dir)
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     icc_profile = resource_filename('facturix', 'color_profiles/sRGB_ICC_v4_Appearance.icc')
     if conform_pdf:
-        process_pdfs_with_progress(df, input_dir, work_dir, icc_profile)
-    xml_template = resource_filename('facturix', f'templates/{level}_template.xml')
+        to_convert = [Path(f) for f in df['pdf'] if pd.notna(f) and f]
+        process_pdfs_with_progress(to_convert, work_dir, icc_profile)
+        # Update the 'pdf' column with the new path while keeping the original filename
+        df['pdf'] = df['pdf'].apply(lambda x: str(work_dir / Path(x).name) if pd.notna(x) and x else x)
+        df = df.dropna(subset=['pdf'])
+    xml_template = resource_filename('facturix', f'templates/template_{level}.xml')
 
     # Step 1: Generate XMLs
-    to_embed = gen_xmls(df, output_dir, xml_template, level)
+    to_embed = gen_xmls(df, work_dir, xml_template)
     
     # Step 2: Validate generated XMLs
     schematron_file = resource_filename('facturix', f'validators/FACTUR-X_{level}.sch')
     xsd_file = resource_filename('facturix', f'validators/FACTUR-X_{level}.xsd')
-    produced_xml = output_dir.glob('*.xml')
+    produced_xml = work_dir.glob('*.xml')
     
-    invalid = validate_xml(produced_xml, schematron_file, xsd_file, level)
+    invalid = validate_xml(produced_xml, schematron_file, xsd_file)
 
     if invalid:
         logger.error(f"The following XML files are not valid: {invalid}")
