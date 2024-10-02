@@ -4,22 +4,16 @@ from lxml import etree
 from pathlib import Path
 
 # Fonction pour remplacer les placeholders dans le modèle XML
-def populate_xml(xml_file, output_file, placeholders):
+def populate_xml(xml_file, output_file, placeholders, optionnal = ['BT-10', 'BT-13', 'BT-31']):
     # Parse le fichier XML (modèle)
     tree = etree.parse(xml_file)
     
     # Convertit l'arbre XML en chaîne pour faire un remplacement de texte
     xml_str = etree.tostring(tree, pretty_print=True, encoding='unicode')
-
-    # Décommenter BT-10 si nécessaire
-    if '{{BT-10}}' in placeholders:
-        xml_str = xml_str.replace('<!--BT-10', '').replace('BT-10-->', '')
     
-    if '{{BT-13}}' in placeholders:
-        xml_str = xml_str.replace('<!--BT-13', '').replace('BT-13-->', '')
-
-    if '{{BT-31}}' in placeholders:
-        xml_str = xml_str.replace('<!--BT-31', '').replace('BT-31-->', '')
+    for k in optionnal:
+        if '{{'+k+'}}' in placeholders:
+            xml_str = xml_str.replace(f'<!--{k}', '').replace(f'{k}-->', '')
     
     # Remplace les placeholders par des valeurs réelles
     for placeholder, value in placeholders.items():
