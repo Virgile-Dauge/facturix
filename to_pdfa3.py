@@ -102,7 +102,7 @@ def process_pdfs_with_progress(input_files, output_dir, icc_profile_path=None)->
     
     output_pdfs = []
     with Progress() as progress:
-        task = progress.add_task("[green]Processing PDFs...", total=len(input_files))
+        task = progress.add_task("[green]To Pdf/A-3...", total=len(input_files))
         
         for input_file in input_files:
             base_name = os.path.basename(input_file)
