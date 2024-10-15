@@ -1,8 +1,7 @@
 import pikepdf
-import hashlib
 import subprocess
 import os
-import multiprocessing
+
 
 from pathlib import Path
 
@@ -19,6 +18,7 @@ def embed_fonts_with_ghostscript(input_pdf, output_pdf, threads=8):
         "-sDEVICE=pdfwrite",
         "-dEmbedAllFonts=true",
         "-dPDFSETTINGS=/prepress",
+        #"-dPDFSETTINGS=/default",
         f"-dNumRenderingThreads={threads}",
         f"-sOutputFile={output_pdf}",
         input_pdf
@@ -55,12 +55,11 @@ def embed_icc_profile_and_fix_trailer(input_pdf_path, icc_profile_path, final_ou
         root["/OutputIntents"].append(icc_stream)
 
         # Step 3: Fix the trailer and add the File Identifiers (ID entry)
-        id_string = hashlib.md5(os.urandom(16)).hexdigest().encode("utf-8")
-        pdf.trailer["/ID"] = pikepdf.Array([id_string, id_string])
+        # id_string = hashlib.md5(os.urandom(16)).hexdigest().encode("utf-8")
+        # pdf.trailer["/ID"] = pikepdf.Array([id_string, id_string])
 
         # Save the final modified PDF
         pdf.save(final_output_pdf)
-
 
 def process_pdfs(input_files, output_dir, icc_profile_path):
     """
@@ -111,13 +110,14 @@ def process_pdfs_with_progress(input_files, output_dir, icc_profile_path=None)->
             final_output_pdf = os.path.join(output_dir, f"{base_name}")
             
             # Embed fonts with Ghostscript
-            embed_fonts_with_ghostscript(input_file, intermediate_pdf)
+            #embed_fonts_with_ghostscript(input_file, intermediate_pdf)
             
             # Embed ICC profile and fix trailer
-            embed_icc_profile_and_fix_trailer(intermediate_pdf, icc_profile_path, final_output_pdf)
+            #embed_icc_profile_and_fix_trailer(intermediate_pdf, icc_profile_path, final_output_pdf)
+            embed_icc_profile_and_fix_trailer(input_file, icc_profile_path, final_output_pdf)
             
             # Remove intermediate file
-            os.remove(intermediate_pdf)
+            #os.remove(intermediate_pdf)
             
             output_pdfs.append(final_output_pdf)
             progress.update(task, advance=1)
