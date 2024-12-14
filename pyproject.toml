@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "facturix"
+version = "1.0.9"
+description = ""
+authors = ["Virgile <virgile.dauge@pm.me>"]
+license = "GPLv3"
+readme = "readme.md"
+include = ["validators/*.sch", 
+    "validators/*.xsd", 
+    "templates/*.xml",
+    "color_profiles/*.icc"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.3"
+factur-x = "^3.1"
+setuptools = "^75.6.0"
+lxml = "^5.3.0"
+pypdf = "^5.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
