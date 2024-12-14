@@ -47,30 +47,38 @@ def extraire_num_facture(pdf_path: Path, pattern: str=r'N° de facture\s*:\s*(\d
 #         else:
 #             return "Numéro de facture non trouvé."
 
-
 def main():
-    # Exemple d'utilisation
-    pdf_path = Path("~/data/enargia/batch_1/output/results/20240904-CAPB-CAPB - ASST S2.pdf").expanduser()
+    import argparse
+    import pandas as pd
+    from pathlib import Path
+    parser = argparse.ArgumentParser(description="Extract invoice numbers from PDF files.")
+    parser.add_argument('-i', "--input_dir", required=True, type=str, help="Directory containing PDF files")
+    parser.add_argument('-o', "--output_dir", required=True, type=str, help="Directory to save the output CSV file")
+    args = parser.parse_args()
 
-    # start_time = time.time()
-    # numero_facture = extraire_num_facture_detail(pdf_path)
-
-    # end_time = time.time()
-
-    # # Calcul du temps d'exécution
-    # execution_time = end_time - start_time
-    # print(f"Temps d'exécution extraire_num_facture_detail : {execution_time:.4f} secondes")
-    # print(f"Le numéro de facture est : {numero_facture}")
-
+    input_dir = Path(args.input_dir).expanduser()
+    output_dir = Path(args.output_dir).expanduser()
+    # Create output directory if it doesn't exist
+    output_dir.mkdir(exist_ok=True, parents=True)
+    
     start_time = time.time()
-    numero_facture = extraire_num_facture(pdf_path)
 
-    end_time = time.time()
+    results = [
+        {'filename': pdf_file.name, 'invoice_number': extraire_num_facture(pdf_file)}
+        for pdf_file in input_dir.rglob('*.pdf')
+    ]
 
-    # Calcul du temps d'exécution
-    execution_time = end_time - start_time
-    print(f"Temps d'exécution extraire_num_facture : {execution_time:.4f} secondes")
-    print(f"Le numéro de facture est : {numero_facture}")
+
+    df = pd.DataFrame(results)
+    
+    print(f"Processing completed in {time.time() - start_time:.2f} seconds")
+    print(df)
+
+    print(list(input_dir.rglob('*.pdf')))
+
+    # Optionally, save the DataFrame to a CSV file
+    df.to_csv(output_dir / 'invoice_numbers.csv', index=False)
+
 
 if __name__ == "__main__":
     main()
